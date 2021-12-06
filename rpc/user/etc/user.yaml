@@ -1,0 +1,19 @@
+Name: user.rpc
+ListenOn: 127.0.0.1:8080
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: user.rpc
+# 以下为手动添加的配置
+# mysql 配置
+DataSource: root:123456@tcp(localhost:3306)/stockexchange
+# 对应的表
+Table: user
+# redis 作为换存储
+Cache:
+  - Host: localhost:6379
+# rpc 调用 model 层代码的步骤
+# 1.编辑 etc/user.yaml 文件
+# 2.编辑 internal/config/config.go 文件
+# 3.编辑 internal/svc/servicecontext.go, 把 model 等依赖封装起来
+# 4.编辑对应的 logic 文件，这里以 internal/logic/loginlogic.go 为例

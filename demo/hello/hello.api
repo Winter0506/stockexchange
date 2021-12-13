@@ -1,0 +1,49 @@
+type (
+	UserOptReq struct {
+		mobile string `json:"mobile" form:"mobile"`
+		passwd string `json:"passwd" form:"passwd"`
+		code   string `json:"code" form:"code"`
+	}
+
+	UserOptResp struct {
+		id    uint   `json:"id"`
+		token string `json:"token"`
+	}
+	//图片验证码支持
+	VerifyReq struct {
+		ticket string `json:"ticket" form:"ticket"`
+	}
+	//图片验证码支持
+	VerifyResp struct {
+		data string `json:"data"`
+	}
+)
+
+service open-api {
+	@doc(
+        summary: 公开的api函数
+        desc: >
+        register 用户注册,
+        authorization 用户登录,
+        verify 图片验证码接口
+    )
+	@server(
+		handler: registerHandler
+		folder: open
+	)
+	post /open/register(UserOptReq) returns(UserOptResp)
+	
+	
+	@server(
+		handler: authorizationHandler
+		folder: open
+	)
+	post /open/authorization(UserOptReq) returns(UserOptResp)
+
+	@server(
+		handler: verifyHandler
+		folder: open
+	)
+	post /open/verify(VerifyReq) returns(VerifyResp)
+	
+}

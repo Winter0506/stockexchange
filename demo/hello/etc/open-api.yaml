@@ -1,0 +1,4 @@
+Name: open-api
+Host: 0.0.0.0
+Port: 8081
+DataSourceName: root:1D007648b4f8@(127.0.0.1:3306)/gozero?charset=utf8

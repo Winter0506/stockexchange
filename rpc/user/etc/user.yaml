@@ -6,10 +6,10 @@ Etcd:
   Key: user.rpc
 # 以下为手动添加的配置
 # mysql 配置
-DataSource: root:123456@tcp(localhost:3306)/stockexchange
+DataSource: root:123456@tcp(localhost:3306)/stockexchange?charset=utf8
 # 对应的表
 Table: user
-# redis 作为换存储
+# redis 作为缓存存储
 Cache:
   - Host: localhost:6379
 # rpc 调用 model 层代码的步骤

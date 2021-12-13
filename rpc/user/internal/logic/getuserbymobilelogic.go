@@ -9,25 +9,22 @@ import (
 	"github.com/tal-tech/go-zero/core/logx"
 )
 
-type DeleteLogic struct {
+type GetUserByMobileLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 	logx.Logger
 }
 
-func NewDeleteLogic(ctx context.Context, svcCtx *svc.ServiceContext) *DeleteLogic {
-	return &DeleteLogic{
+func NewGetUserByMobileLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserByMobileLogic {
+	return &GetUserByMobileLogic{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 		Logger: logx.WithContext(ctx),
 	}
 }
 
-func (l *DeleteLogic) Delete(in *user.ReqUserId) (*user.CommResp, error) {
+func (l *GetUserByMobileLogic) GetUserByMobile(in *user.EmailRequest) (*user.UserInfoResponse, error) {
 	// todo: add your logic here and delete this line
-	err := l.svcCtx.Model.Delete(in.Id)
-	if err != nil {
-		return nil, err
-	}
-	return &user.CommResp{Ok: true}, nil
+
+	return &user.UserInfoResponse{}, nil
 }

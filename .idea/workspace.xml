@@ -1,7 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="" />
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/demo/hello/etc/open-api.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/hello.api" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/hello.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/config/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/handler/open/authorizationhandler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/handler/open/registerhandler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/handler/open/verifyhandler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/handler/routes.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/logic/open/authorizationlogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/logic/open/registerlogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/logic/open/verifylogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/models/models.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/svc/servicecontext.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/types/types.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/internal/utils/passsword.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/hello/open.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/model/global.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/user/internal/logic/checkpasswordlogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/user/internal/logic/getuserbyidlogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/user/internal/logic/getuserbymobilelogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/user/internal/logic/getuserlistlogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/user/internal/server/userserver.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/user/userclient/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/model/user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/user.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/model/usermodel.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/usermodel.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/etc/user.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/etc/user.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/config/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/createlogic.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/deletelogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/createuserlogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/getalllogic.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/getlogic.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/loginlogic.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/updatelogic.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/internal/server/usersserver.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/internal/svc/servicecontext.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/svc/servicecontext.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/user.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/user/user.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/user/user.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/users/users.go" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,12 +61,19 @@
     </option>
   </component>
   <component name="GOROOT" url="file://$PROJECT_DIR$/../../../GOROOT" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="21iXdhcosfSxMWjYBabvznGXMh1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -34,6 +87,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Go\GOPATH\src\stockexchange\demo" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
@@ -61,6 +119,21 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

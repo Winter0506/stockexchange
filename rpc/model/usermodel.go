@@ -3,22 +3,23 @@ package model
 import (
 	"database/sql"
 	"fmt"
-	"github.com/tal-tech/go-zero/core/stores/cache"
 	"strings"
 
-	"github.com/tal-tech/go-zero/core/stores/builder" // 生成之后要把builderx 改成builder
+	"github.com/tal-tech/go-zero/core/stores/builder" // builderx 要改成build
+	"github.com/tal-tech/go-zero/core/stores/cache"
 	"github.com/tal-tech/go-zero/core/stores/sqlc"
 	"github.com/tal-tech/go-zero/core/stores/sqlx"
 	"github.com/tal-tech/go-zero/core/stringx"
 )
 
 var (
-	userFieldNames          = builder.RawFieldNames(&User{}) // builderx改成builder
+	userFieldNames          = builder.RawFieldNames(&User{})
 	userRows                = strings.Join(userFieldNames, ",")
 	userRowsExpectAutoSet   = strings.Join(stringx.Remove(userFieldNames, "`id`", "`create_time`", "`update_time`"), ",")
 	userRowsWithPlaceHolder = strings.Join(stringx.Remove(userFieldNames, "`id`", "`create_time`", "`update_time`"), "=?,") + "=?"
 
 	cacheUserIdPrefix       = "cache:user:id:"
+	cacheUserEmailPrefix    = "cache:user:email:"
 	cacheUserUsernamePrefix = "cache:user:username:"
 )
 
@@ -26,9 +27,12 @@ type (
 	UserModel interface {
 		Insert(data *User) (sql.Result, error)
 		FindOne(id int64) (*User, error)
+		FindOneByEmail(email string) (*User, error)
 		FindOneByUsername(username string) (*User, error)
 		Update(data *User) error
 		Delete(id int64) error
+		// 新增接口
+		FindAll() ([]*User, error)
 	}
 
 	defaultUserModel struct {
@@ -57,13 +61,32 @@ func NewUserModel(conn sqlx.SqlConn, c cache.CacheConf) UserModel {
 	}
 }
 
+// 这是查询所有
+func (m *defaultUserModel) FindAll() ([]*User, error) {
+	var resp []*User
+	Key := fmt.Sprintf("%s", cacheUserIdPrefix)
+	err := m.QueryRow(&resp, Key, func(conn sqlx.SqlConn, v interface{}) error {
+		query := fmt.Sprintf("select * from %s", m.table)
+		return conn.QueryRow(v, query)
+	})
+	switch err {
+	case nil:
+		return resp, nil
+	case sqlc.ErrNotFound:
+		return nil, ErrNotFound
+	default:
+		return nil, err
+	}
+}
+
 func (m *defaultUserModel) Insert(data *User) (sql.Result, error) {
-	userIdKey := fmt.Sprintf("%s%v", cacheUserIdPrefix, data.Id)
+	userEmailKey := fmt.Sprintf("%s%v", cacheUserEmailPrefix, data.Email)
 	userUsernameKey := fmt.Sprintf("%s%v", cacheUserUsernamePrefix, data.Username)
+	userIdKey := fmt.Sprintf("%s%v", cacheUserIdPrefix, data.Id)
 	ret, err := m.Exec(func(conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?, ?, ?, ?, ?)", m.table, userRowsExpectAutoSet)
 		return conn.Exec(query, data.Username, data.Password, data.Email, data.Gender, data.Role, data.CreatedAt, data.UpdatedAt, data.DeletedAt, data.IsDeleted)
-	}, userIdKey, userUsernameKey)
+	}, userIdKey, userEmailKey, userUsernameKey)
 	return ret, err
 }
 
@@ -74,6 +97,26 @@ func (m *defaultUserModel) FindOne(id int64) (*User, error) {
 		query := fmt.Sprintf("select %s from %s where `id` = ? limit 1", userRows, m.table)
 		return conn.QueryRow(v, query, id)
 	})
+	switch err {
+	case nil:
+		return &resp, nil
+	case sqlc.ErrNotFound:
+		return nil, ErrNotFound
+	default:
+		return nil, err
+	}
+}
+
+func (m *defaultUserModel) FindOneByEmail(email string) (*User, error) {
+	userEmailKey := fmt.Sprintf("%s%v", cacheUserEmailPrefix, email)
+	var resp User
+	err := m.QueryRowIndex(&resp, userEmailKey, m.formatPrimary, func(conn sqlx.SqlConn, v interface{}) (i interface{}, e error) {
+		query := fmt.Sprintf("select %s from %s where `email` = ? limit 1", userRows, m.table)
+		if err := conn.QueryRow(&resp, query, email); err != nil {
+			return nil, err
+		}
+		return resp.Id, nil
+	}, m.queryPrimary)
 	switch err {
 	case nil:
 		return &resp, nil
@@ -106,14 +149,16 @@ func (m *defaultUserModel) FindOneByUsername(username string) (*User, error) {
 
 func (m *defaultUserModel) Update(data *User) error {
 	userIdKey := fmt.Sprintf("%s%v", cacheUserIdPrefix, data.Id)
+	userEmailKey := fmt.Sprintf("%s%v", cacheUserEmailPrefix, data.Email)
 	userUsernameKey := fmt.Sprintf("%s%v", cacheUserUsernamePrefix, data.Username)
 	_, err := m.Exec(func(conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, userRowsWithPlaceHolder)
 		return conn.Exec(query, data.Username, data.Password, data.Email, data.Gender, data.Role, data.CreatedAt, data.UpdatedAt, data.DeletedAt, data.IsDeleted, data.Id)
-	}, userIdKey, userUsernameKey)
+	}, userIdKey, userEmailKey, userUsernameKey)
 	return err
 }
 
+// 普通业务应该为软删除 管理员才可以调用Delete方法
 func (m *defaultUserModel) Delete(id int64) error {
 	data, err := m.FindOne(id)
 	if err != nil {
@@ -121,11 +166,12 @@ func (m *defaultUserModel) Delete(id int64) error {
 	}
 
 	userIdKey := fmt.Sprintf("%s%v", cacheUserIdPrefix, id)
+	userEmailKey := fmt.Sprintf("%s%v", cacheUserEmailPrefix, data.Email)
 	userUsernameKey := fmt.Sprintf("%s%v", cacheUserUsernamePrefix, data.Username)
 	_, err = m.Exec(func(conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("delete from %s where `id` = ?", m.table)
 		return conn.Exec(query, id)
-	}, userIdKey, userUsernameKey)
+	}, userUsernameKey, userIdKey, userEmailKey)
 	return err
 }
 

@@ -15,6 +15,7 @@ type ServiceContext struct {
 	Model  model.UserModel // 手动添加
 }
 
+// TODO 到后面业务再改用gorm 现在先用sqlx
 /*func GormServiceContext(c config.Config) *ServiceContext {
 	//启动Gorm支持
 	db, err := gorm.Open(mysql.Open(c.DataSourceName), &gorm.Config{
@@ -35,7 +36,9 @@ type ServiceContext struct {
 func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config: c,
-		Model:  model.NewUserModel(sqlx.NewMysql(c.DataSource), c.Cache), // 手动添加
+		//           func NewUserModel(conn sqlx.SqlConn, c cache.CacheConf) UserModel
+		Model: model.NewUserModel(sqlx.NewMysql(c.DataSource), c.Cache), // 手动添加
+		// TODO 怎样改成gorm
 		// Model:  model.NewUserModel(GormServiceContext(c), c.Cache),
 	}
 }

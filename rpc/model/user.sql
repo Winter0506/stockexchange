@@ -3,7 +3,7 @@ CREATE TABLE `user`
     `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `username` varchar(20) NOT NULL UNIQUE COMMENT '用户名',
     `password` varchar(100) NOT NULL COMMENT '密码',
-    `email` varchar(50) NOT NULL COMMENT '邮件',
+    `email` varchar(50) NOT NULL UNIQUE COMMENT '邮件',
     `gender` varchar(6) DEFAULT 'male' COMMENT 'female表示女, male表示男',
     `role` tinyint(1) DEFAULT '1' COMMENT '1表示普通用户, 2表示管理员',
     `created_at` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',

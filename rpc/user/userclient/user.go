@@ -18,6 +18,7 @@ type (
 	EmailRequest      = user.EmailRequest
 	Empty             = user.Empty
 	IdRequest         = user.IdRequest
+	NameRequest       = user.NameRequest
 	PageInfo          = user.PageInfo
 	PasswordCheckInfo = user.PasswordCheckInfo
 	UpdateUserInfo    = user.UpdateUserInfo
@@ -26,7 +27,8 @@ type (
 
 	User interface {
 		GetUserList(ctx context.Context, in *PageInfo, opts ...grpc.CallOption) (*UserListResponse, error)
-		GetUserByMobile(ctx context.Context, in *EmailRequest, opts ...grpc.CallOption) (*UserInfoResponse, error)
+		GetUserByEmail(ctx context.Context, in *EmailRequest, opts ...grpc.CallOption) (*UserInfoResponse, error)
+		GetUserByName(ctx context.Context, in *NameRequest, opts ...grpc.CallOption) (*UserInfoResponse, error)
 		GetUserById(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*UserInfoResponse, error)
 		CreateUser(ctx context.Context, in *CreateUserInfo, opts ...grpc.CallOption) (*UserInfoResponse, error)
 		UpdateUser(ctx context.Context, in *UpdateUserInfo, opts ...grpc.CallOption) (*Empty, error)
@@ -49,9 +51,14 @@ func (m *defaultUser) GetUserList(ctx context.Context, in *PageInfo, opts ...grp
 	return client.GetUserList(ctx, in, opts...)
 }
 
-func (m *defaultUser) GetUserByMobile(ctx context.Context, in *EmailRequest, opts ...grpc.CallOption) (*UserInfoResponse, error) {
+func (m *defaultUser) GetUserByEmail(ctx context.Context, in *EmailRequest, opts ...grpc.CallOption) (*UserInfoResponse, error) {
 	client := user.NewUserClient(m.cli.Conn())
-	return client.GetUserByMobile(ctx, in, opts...)
+	return client.GetUserByEmail(ctx, in, opts...)
+}
+
+func (m *defaultUser) GetUserByName(ctx context.Context, in *NameRequest, opts ...grpc.CallOption) (*UserInfoResponse, error) {
+	client := user.NewUserClient(m.cli.Conn())
+	return client.GetUserByName(ctx, in, opts...)
 }
 
 func (m *defaultUser) GetUserById(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*UserInfoResponse, error) {

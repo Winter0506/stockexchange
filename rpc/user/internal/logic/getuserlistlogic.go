@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"gorm.io/gorm"
 
 	"stockexchange/rpc/user/internal/svc"
 	"stockexchange/rpc/user/user"
@@ -23,8 +24,27 @@ func NewGetUserListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUs
 	}
 }
 
+func Paginate(page, pageSize int) func(db *gorm.DB) *gorm.DB {
+	return func(db *gorm.DB) *gorm.DB {
+		if page == 0 {
+			page = 1
+		}
+
+		switch {
+		case pageSize > 100:
+			pageSize = 100
+		case pageSize <= 0:
+			pageSize = 10
+		}
+
+		offset := (page - 1) * pageSize
+		return db.Offset(offset).Limit(pageSize)
+	}
+}
+
 func (l *GetUserListLogic) GetUserList(in *user.PageInfo) (*user.UserListResponse, error) {
 	// todo: add your logic here and delete this line
+	all, err := l.svcCtx.Model.FindAll()
 
 	return &user.UserListResponse{}, nil
 }

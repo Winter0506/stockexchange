@@ -2,7 +2,7 @@
 package types
 
 type UserOptReq struct {
-	Mobile string `json:"mobile" form:"mobile"`
+	Email  string `json:"Email" form:"Email"`
 	Passwd string `json:"passwd" form:"passwd"`
 }
 

@@ -8,22 +8,22 @@ import (
 	"github.com/tal-tech/go-zero/core/logx"
 )
 
-type GetUserByIdLogic struct {
+type GetUserByNameLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 	logx.Logger
 }
 
-func NewGetUserByIdLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserByIdLogic {
-	return &GetUserByIdLogic{
+func NewGetUserByNameLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserByNameLogic {
+	return &GetUserByNameLogic{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 		Logger: logx.WithContext(ctx),
 	}
 }
 
-func (l *GetUserByIdLogic) GetUserById(in *user.IdRequest) (*user.UserInfoResponse, error) {
-	ret, err := l.svcCtx.Model.FindOne(in.Id)
+func (l *GetUserByNameLogic) GetUserByName(in *user.NameRequest) (*user.UserInfoResponse, error) {
+	ret, err := l.svcCtx.Model.FindOneByUsername(in.Name)
 	if err != nil {
 		return nil, err
 	}

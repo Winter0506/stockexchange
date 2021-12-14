@@ -26,7 +26,7 @@ func NewRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) RegisterL
 
 func (l *RegisterLogic) Register(req types.UserOptReq) (*types.UserOptResp, error) {
 	user := models.User{
-		Mobile: req.Mobile,
+		Email:  req.Email,
 		Passwd: req.Passwd,
 	}
 	result := l.svcCtx.DbEngin.Create(&user)

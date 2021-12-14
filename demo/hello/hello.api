@@ -1,6 +1,6 @@
 type (
 	UserOptReq struct {
-		mobile string `json:"mobile" form:"mobile"`
+		Email string `json:"Email" form:"Email"`
 		passwd string `json:"passwd" form:"passwd"`
 		code   string `json:"code" form:"code"`
 	}

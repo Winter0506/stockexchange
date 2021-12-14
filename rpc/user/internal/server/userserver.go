@@ -26,9 +26,14 @@ func (s *UserServer) GetUserList(ctx context.Context, in *user.PageInfo) (*user.
 	return l.GetUserList(in)
 }
 
-func (s *UserServer) GetUserByMobile(ctx context.Context, in *user.EmailRequest) (*user.UserInfoResponse, error) {
-	l := logic.NewGetUserByMobileLogic(ctx, s.svcCtx)
-	return l.GetUserByMobile(in)
+func (s *UserServer) GetUserByEmail(ctx context.Context, in *user.EmailRequest) (*user.UserInfoResponse, error) {
+	l := logic.NewGetUserByEmailLogic(ctx, s.svcCtx)
+	return l.GetUserByEmail(in)
+}
+
+func (s *UserServer) GetUserByName(ctx context.Context, in *user.NameRequest) (*user.UserInfoResponse, error) {
+	l := logic.NewGetUserByNameLogic(ctx, s.svcCtx)
+	return l.GetUserByName(in)
 }
 
 func (s *UserServer) GetUserById(ctx context.Context, in *user.IdRequest) (*user.UserInfoResponse, error) {

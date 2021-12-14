@@ -9,7 +9,7 @@ import (
 
 type User struct {
 	gorm.Model
-	Mobile string `gorm:"index:mobile;type:varchar(13)"`
+	Email  string `gorm:"index:Email;type:varchar(13)"`
 	Passwd string `gorm:"type:varchar(64)"`
 }
 

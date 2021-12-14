@@ -71,8 +71,8 @@ go mod init  hello
 本文设计API如下
 |描述|格式|方法|参数|返回|
 |----|----|----|----|----|
-|用户注册|/open/register|post|mobile:手机号,passwd:密码,code:图片验证码|id:用户ID,token:用户token|
-|用户登录|/open/authorization|post|mobile:手机号,passwd:密码,code:图片验证码|id:用户ID,token:用户token|
+|用户注册|/open/register|post|Email:手机号,passwd:密码,code:图片验证码|id:用户ID,token:用户token|
+|用户登录|/open/authorization|post|Email:手机号,passwd:密码,code:图片验证码|id:用户ID,token:用户token|
 |图片验证码请求|/open/verify|get|ticket:图片验证码的id|data:base64格式的图片|
 
 根据以上描述,书写api的模板文件如下
@@ -81,7 +81,7 @@ go mod init  hello
 
 type (
 	UserOptReq struct {
-		mobile string `json:"mobile"`
+		Email string `json:"Email"`
 		passwd string `json:"passwd"`
 		code   string `json:"code"`
 	}
@@ -180,7 +180,7 @@ go run open.go
 ```
 测试一下
 ```bash
-curl http://127.0.0.1:8888/open/register -X POST -H "Content-Type: application/json" -d {\"mobile\":\"15367151352\",\"passwd\":\"testpwd\",\"code\":\"asdf\"}
+curl http://127.0.0.1:8888/open/register -X POST -H "Content-Type: application/json" -d {\"Email\":\"15367151352\",\"passwd\":\"testpwd\",\"code\":\"asdf\"}
 {"id":0,"token":""}
 ```
 
@@ -259,7 +259,7 @@ import (
 
 type User struct {
 	gorm.Model
-	Mobile string `gorm:"index:mobile;type:varchar(13)"`
+	Email string `gorm:"index:Email;type:varchar(13)"`
 	Passwd string `gorm:"type:varchar(64)"`
 }
 //在创建前检验验证一下密码的有效性
@@ -331,7 +331,7 @@ func NewRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) RegisterL
 
 func (l *RegisterLogic) Register(req types.UserOptReq) (*types.UserOptResp, error) {
 	user := models.User{
-		Mobile: req.Mobile,
+		Email: req.Email,
 		Passwd: req.Passwd,
 	}
 	result := l.svcCtx.DbEngin.Create(&user)
@@ -347,7 +347,7 @@ func (l *RegisterLogic) Register(req types.UserOptReq) (*types.UserOptResp, erro
 
 ## 测试一下
 ```bash
->curl http://127.0.0.1:8888/open/register -X POST -H "Content-Type: application/json" -d {\"mobile\":\"15367151352\",\"passwd\":\"testpwd\"}
+>curl http://127.0.0.1:8888/open/register -X POST -H "Content-Type: application/json" -d {\"Email\":\"15367151352\",\"passwd\":\"testpwd\"}
 {"id":3,"token":""}
 ```
 
@@ -355,7 +355,7 @@ func (l *RegisterLogic) Register(req types.UserOptReq) (*types.UserOptResp, erro
 ## go-zero
 ###  接口定义希望支持多种content-type
     UserOptReq struct {
-		mobile string `json:"mobile" form:"mobile" xml:"mobile"`
+		Email string `json:"Email" form:"Email" xml:"Email"`
 		passwd string `json:"passwd" form:"passwd" xml:"passwd"`
 		code   string `json:"code" form:"code" xml:"code"`
 	}

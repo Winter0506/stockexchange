@@ -22,6 +22,7 @@ var configFile = flag.String("f", "etc/user.yaml", "the config file")
 // 使用命令 goctl rpc proto -src user.proto -dir . 生成 user rpc 服务的代码。
 // 启动 go run user.go -f etc/user.yaml
 // etcd 客户端 查询 etcdctl get user.rpc --prefix
+// 比如proto文件修改之后  原来的代码再生成不会被更改?
 func main() {
 	flag.Parse()
 

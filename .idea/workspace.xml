@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.14_实现user">
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.15_完成model的编写和测试">
       <change afterPath="$PROJECT_DIR$/rpc/demo/global/global.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/rpc/demo/initialize/db.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/rpc/demo/initialize/logger.go" afterDir="false" />
@@ -9,6 +9,24 @@
       <change afterPath="$PROJECT_DIR$/rpc/demo/proto/user/user.pb.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/rpc/demo/simulate.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/etc/open-api.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/hello.api" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/hello.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/config/config.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/handler/open/authorizationhandler.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/handler/open/registerhandler.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/handler/open/verifyhandler.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/handler/routes.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/logic/open/authorizationlogic.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/logic/open/registerlogic.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/logic/open/verifylogic.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/models/models.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/svc/servicecontext.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/types/types.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/internal/utils/passsword.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hello/open.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/model/user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/user.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/model/usermodel.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/usermodel.go" afterDir="false" />
@@ -117,7 +135,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="重写user设计及实现过程" />
     <MESSAGE value="21.12.14_实现user" />
-    <option name="LAST_COMMIT_MESSAGE" value="21.12.14_实现user" />
+    <MESSAGE value="21.12.15_完成model的编写和测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="21.12.15_完成model的编写和测试" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

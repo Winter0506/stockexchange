@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-
 	"stockexchange/rpc/user/internal/config"
 	"stockexchange/rpc/user/internal/server"
 	"stockexchange/rpc/user/internal/svc"

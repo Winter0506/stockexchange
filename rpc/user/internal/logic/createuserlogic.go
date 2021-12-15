@@ -6,14 +6,12 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/anaskhan96/go-password-encoder"
-	"github.com/tal-tech/go-zero/core/stores/sqlx"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"stockexchange/rpc/model"
-	"time"
-
 	"stockexchange/rpc/user/internal/svc"
 	"stockexchange/rpc/user/user"
+	"time"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -35,17 +33,13 @@ func NewCreateUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Create
 func (l *CreateUserLogic) CreateUser(in *user.CreateUserInfo) (*user.UserInfoResponse, error) {
 	// 1.先查询用户id或者email是否已经被使用
 	hasUserNameInfo, err := l.svcCtx.Model.FindOneByUsername(in.UserName)
+	fmt.Println(hasUserNameInfo)
 	if hasUserNameInfo != nil {
 		return nil, status.Errorf(codes.AlreadyExists, "用户名已存在")
-	} else if err == sqlx.ErrNotFound {
-		return nil, status.Errorf(codes.Internal, "查询数据库错误")
 	}
-
 	hasUserEmailInfo, err := l.svcCtx.Model.FindOneByEmail(in.Email)
 	if hasUserEmailInfo != nil {
 		return nil, status.Errorf(codes.AlreadyExists, "用户邮箱已存在")
-	} else if err == sqlx.ErrNotFound {
-		return nil, status.Errorf(codes.Internal, "查询数据库错误")
 	}
 
 	// UserName PassWord Email Gender
@@ -58,11 +52,16 @@ func (l *CreateUserLogic) CreateUser(in *user.CreateUserInfo) (*user.UserInfoRes
 		Username: in.UserName,
 		Password: passWord,
 		Email:    in.Email,
+		Gender:   in.Gender,
+		Role:     1,
 		CreatedAt: sql.NullTime{
 			Time:  time.Now(),
-			Valid: false,
+			Valid: true,
 		},
-		// TODO 检查一下数据库中的时间 有无插入
+		UpdatedAt: sql.NullTime{
+			Time:  time.Now(),
+			Valid: true,
+		},
 	})
 	if err != nil {
 		return nil, err

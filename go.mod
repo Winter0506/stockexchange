@@ -12,8 +12,9 @@ require (
 	github.com/syhlion/greq v1.1.1
 	github.com/syhlion/requestwork.v2 v0.0.0-20210119021838-2bc6ad110469
 	github.com/tal-tech/go-zero v1.2.4
+	go.uber.org/zap v1.17.0
 	golang.org/x/text v0.3.7
 	google.golang.org/grpc v1.42.0
-	gorm.io/driver/mysql v1.2.1 // indirect
+	gorm.io/driver/mysql v1.2.1
 	gorm.io/gorm v1.22.4
 )

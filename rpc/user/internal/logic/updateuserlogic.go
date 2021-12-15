@@ -26,29 +26,42 @@ func NewUpdateUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Update
 }
 
 func (l *UpdateUserLogic) UpdateUser(in *user.UpdateUserInfo) (*user.Empty, error) {
-	// todo: add your logic here and delete this line
-	if in.IsDeleted == 1 {
+	rsp, _ := l.svcCtx.Model.FindOne(in.Id)
+	createdTime := rsp.CreatedAt
+	updatedTime := rsp.UpdatedAt
+	// 因为传进来的都为空
+	if in.IsDeleted != 0 {
 		err := l.svcCtx.Model.Update(&model.User{
+			Id:        in.Id,
+			Username:  in.UserName,
+			Password:  in.PassWord,
+			Email:     in.Email,
+			Gender:    in.Gender,
+			Role:      1, // TODO 更改用户为管理员应该有特别方法来执行
+			CreatedAt: createdTime,
+			UpdatedAt: updatedTime,
 			DeletedAt: sql.NullTime{
 				Time:  time.Now(),
-				Valid: false,
+				Valid: true,
 			},
-			// TODO 检查一下数据库中的时间 有无插入
+			IsDeleted: 1,
 		})
 		if err != nil {
 			return nil, err
 		}
 	} else {
 		err := l.svcCtx.Model.Update(&model.User{
-			Username: in.UserName,
-			Password: in.PassWord,
-			Email:    in.Email,
-			Gender:   in.Gender, // TODO 更改用户为管理员应该有特别方法来执行
+			Id:        in.Id,
+			Username:  in.UserName,
+			Password:  in.PassWord,
+			Email:     in.Email,
+			Gender:    in.Gender,
+			Role:      1, // TODO 更改用户为管理员应该有特别方法来执行
+			CreatedAt: createdTime,
 			UpdatedAt: sql.NullTime{
 				Time:  time.Now(),
-				Valid: false,
+				Valid: true,
 			},
-			// TODO 检查一下数据库中的时间 有无插入
 		})
 		if err != nil {
 			return nil, err

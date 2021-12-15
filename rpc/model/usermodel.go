@@ -32,7 +32,7 @@ type (
 		Update(data *User) error
 		Delete(id int64) error
 		// 新增接口
-		FindAll() ([]*User, error)
+		FindAll() (*[]User, error)
 	}
 
 	defaultUserModel struct {
@@ -62,16 +62,18 @@ func NewUserModel(conn sqlx.SqlConn, c cache.CacheConf) UserModel {
 }
 
 // 这是查询所有
-func (m *defaultUserModel) FindAll() ([]*User, error) {
-	var resp []*User
+func (m *defaultUserModel) FindAll() (*[]User, error) {
+	// 写成*[]User不行 会发生内存错误
+	var resp []User
 	Key := fmt.Sprintf("%s", cacheUserIdPrefix)
 	err := m.QueryRow(&resp, Key, func(conn sqlx.SqlConn, v interface{}) error {
-		query := fmt.Sprintf("select * from %s", m.table)
-		return conn.QueryRow(v, query)
+		query := fmt.Sprintf("select %s from %s", userRows, m.table)
+		return conn.QueryRows(v, query)
 	})
+	fmt.Println(err)
 	switch err {
 	case nil:
-		return resp, nil
+		return &resp, nil
 	case sqlc.ErrNotFound:
 		return nil, ErrNotFound
 	default:
@@ -85,6 +87,7 @@ func (m *defaultUserModel) Insert(data *User) (sql.Result, error) {
 	userIdKey := fmt.Sprintf("%s%v", cacheUserIdPrefix, data.Id)
 	ret, err := m.Exec(func(conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?, ?, ?, ?, ?)", m.table, userRowsExpectAutoSet)
+		fmt.Println(query)
 		return conn.Exec(query, data.Username, data.Password, data.Email, data.Gender, data.Role, data.CreatedAt, data.UpdatedAt, data.DeletedAt, data.IsDeleted)
 	}, userIdKey, userEmailKey, userUsernameKey)
 	return ret, err

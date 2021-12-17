@@ -3,19 +3,19 @@ package svc
 import (
 	"github.com/tal-tech/go-zero/zrpc"
 	"stockexchange/api/internal/config"
-	"stockexchange/rpc/user/users"
+	"stockexchange/rpc/user/userclient"
 )
 
 type ServiceContext struct {
 	Config config.Config
-	// users.Users 是 user rpc 服务对外暴露的接口
-	User   users.Users
+	// user rpc 服务对外暴露的接口  要知道从哪里调用而来的
+	User userclient.User
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config: c,
-		//  zrpc.MustNewClient(c.User) 创建了一个 grpc 客户端
-		User:   users.NewUsers(zrpc.MustNewClient(c.User)),
+		//创建了一个 grpc 客户端
+		User: userclient.NewUser(zrpc.MustNewClient(c.User)),
 	}
 }

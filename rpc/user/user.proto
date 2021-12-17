@@ -66,6 +66,7 @@ message UserInfoResponse {
   string email = 4;
   string gender = 5;
   int32 role = 6;
+  int32 isDeleted = 7;
 }
 
 message UserListResponse {

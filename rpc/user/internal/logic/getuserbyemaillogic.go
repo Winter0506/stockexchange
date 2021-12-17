@@ -30,12 +30,13 @@ func (l *GetUserByEmailLogic) GetUserByEmail(in *user.EmailRequest) (*user.UserI
 	}
 	// 不用去 判断用户是否被软删除 因为这些方法都是 管理员调用 也可以后面再写
 	return &user.UserInfoResponse{
-		Id:       ret.Id,
-		UserName: ret.Username,
-		PassWord: ret.Password,
-		Email:    ret.Email,
-		Gender:   ret.Gender,
-		Role:     int32(ret.Role), // role 就是1 和 2 二者之一
+		Id:        ret.Id,
+		UserName:  ret.Username,
+		PassWord:  ret.Password,
+		Email:     ret.Email,
+		Gender:    ret.Gender,
+		Role:      int32(ret.Role), // role 就是1 和 2 二者之一
+		IsDeleted: int32(ret.IsDeleted),
 	}, nil
 	return &user.UserInfoResponse{}, nil
 }

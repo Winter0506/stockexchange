@@ -43,7 +43,7 @@ func (l *LoginLogic) Login(req types.ReqUserLogin) (*types.RespUserLogin, error)
 	// 登录不用实现验证码逻辑, 注册的时候才需要 邮件验证码 和 图片验证码
 	// fan返回的时候需要携带token回去
 
-	// 判断有没有被删除?
+	// 判断用户有没有被删除
 	resp, err := l.svcCtx.User.GetUserByEmail(l.ctx, &user.EmailRequest{Email: req.Email})
 	logx.Infof("email: %v", l.ctx.Value("email")) // 这里的key和生成jwt token时传入的key一致
 	if err != nil {
@@ -72,6 +72,19 @@ func (l *LoginLogic) Login(req types.ReqUserLogin) (*types.RespUserLogin, error)
 			}
 		}
 	}
+
+	if resp.IsDeleted == 1 {
+		loginMessage := types.LoginMessage{}
+		loginStatus := types.LoginMeta{
+			Msg:    "无效用户",
+			Status: http.StatusOK,
+		}
+		return &types.RespUserLogin{
+			LoginMessage: loginMessage,
+			LoginMeta:    loginStatus,
+		}, nil
+	}
+
 	// 还需要验证密码
 	passwordResp, passwordErr := l.svcCtx.User.CheckPassWord(l.ctx, &user.PasswordCheckInfo{Password: req.Password,
 		EncryptedPassword: resp.PassWord})

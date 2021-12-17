@@ -2,13 +2,21 @@
 package types
 
 type RespUserLogin struct {
-	LoginMessage `json:"message"`
-	LoginMeta    `json:"meta"`
+	LoginMessage
+	LoginMeta
 }
 
 type ReqUserLogin struct {
 	Email    string `json:"email" binding:"required, email"`
 	Password string `json:"password" binding:"required, min=6, max=10"`
+}
+
+type ReqUserRegister struct {
+	UserName string `json:"username" binding:"required,max=10"`
+	Password string `json:"password" binding:"required, min=6, max=10"`
+	Email    string `json:"email" binding:"required, email"`
+	Gender   string `json:"password" binding:"required"`
+	Code     string `json:"code" binding:"required,min=6,max=6"`
 }
 
 type LoginMessage struct {

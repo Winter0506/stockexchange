@@ -63,12 +63,13 @@ func (l *GetUserListLogic) GetUserList(in *user.PageInfo) (*user.UserListRespons
 
 	for _, eveRet := range tmpAll {
 		userInfoRsp := &user.UserInfoResponse{
-			Id:       eveRet.Id,
-			UserName: eveRet.Username,
-			PassWord: eveRet.Password,
-			Email:    eveRet.Email,
-			Gender:   eveRet.Gender,
-			Role:     int32(eveRet.Role), // role 就是1 和 2 二者之一
+			Id:        eveRet.Id,
+			UserName:  eveRet.Username,
+			PassWord:  eveRet.Password,
+			Email:     eveRet.Email,
+			Gender:    eveRet.Gender,
+			Role:      int32(eveRet.Role), // role 就是1 和 2 二者之一
+			IsDeleted: int32(eveRet.IsDeleted),
 		}
 		rsp.Data = append(rsp.Data, userInfoRsp)
 	}

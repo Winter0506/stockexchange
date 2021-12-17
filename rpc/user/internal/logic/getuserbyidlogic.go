@@ -28,11 +28,12 @@ func (l *GetUserByIdLogic) GetUserById(in *user.IdRequest) (*user.UserInfoRespon
 		return nil, err
 	}
 	return &user.UserInfoResponse{
-		Id:       ret.Id,
-		UserName: ret.Username,
-		PassWord: ret.Password,
-		Email:    ret.Email,
-		Gender:   ret.Gender,
-		Role:     int32(ret.Role), // role 就是1 和 2 二者之一
+		Id:        ret.Id,
+		UserName:  ret.Username,
+		PassWord:  ret.Password,
+		Email:     ret.Email,
+		Gender:    ret.Gender,
+		Role:      int32(ret.Role), // role 就是1 和 2 二者之一
+		IsDeleted: int32(ret.IsDeleted),
 	}, nil
 }

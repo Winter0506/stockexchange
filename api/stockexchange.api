@@ -1,62 +1,56 @@
 syntax = "v1"
 
 info(
-	title: 模拟股票交易
-	desc: 模拟股票交易
+	title: "模拟股票交易"
+	desc: "一个小项目"
 	author: "wangqichao"
 	email: "1569770895@qq.com"
 )
 
-type reqUser {
-	Username string `json:"username"`
-	Password string `json:"password"`
+type respUserLogin {
+	LoginMessage
+	LoginMeta
 }
 
-type reqUserId {
-	Id int64 `path:"id"`
+type reqUserLogin {
+	Email    string `json:"email" binding:"required, email"`
+	Password string `json:"password" binding:"required, min=6, max=10"`
+	//	Captcha   string `form:"captcha" json:"captcha" binding:"required,min=4,max=4"`
+	//	CaptchaId string `form:"captcha_id" json:"captcha_id" binding:"required"`
 }
 
-type reqUpdateUser {
-	Id       int64  `path:"id"`
-	Username string `json:"username"`
-	Password string `json:"password"`
+type LoginMessage {
+	Id          int64  `json:"id"`
+	Username    string `json:"username"`
+	Password    string `json:"password"`
+	Email       string `json:"email"`
+	Gender      string `json:"gender"`
+	Role        int32  `json:"role"`
+	AccessToken string `json:"token"`
 }
 
-// 暂时只设置这三个字段
-type user {
-	Id       int64  `json:"id"`
-	Username string `json:"username"`
-	Password string `json:"password"`
+type LoginMeta {
+	Msg    string `json:"msg""`
+	Status int16  `json:"status"`
 }
 
-type respLogin {
-	Token string `json:"token"`
-}
-
-type commResp {
-	Ok    bool   `json:"ok"`
-	Error string `json:"error"`
-}
-
-// 这只是一个service  其他的service怎么办?
+// 这只是一个service  其他的service怎么办? 事实上只能有一个service
 // 执行命令 goctl api -o stockexchange.api   创建 blog.api 文件。
 // 执行命令 goctl api go -api stockexchange.api -dir . 生成 api 相关代码
 service stockexchange {
+	// 还没有写的路由
+	//	@handler GetUserList
+	//	get /api/v1/user returns ([]userInfoResponse)
+	
 	@handler Login
-	post /login (reqUser) returns (respLogin)
+	post /api/v1/user/login (reqUserLogin) returns (respUserLogin)
 	
-	@handler AddUser
-	post /users (reqUser) returns (commResp)
-	
-	@handler DeleteUser
-	delete /users/id/:id (reqUserId) returns (commResp)
-	
-	@handler UpdateUser
-	put /users/id/:id (reqUpdateUser) returns (commResp)
-	
-	@handler GetUser
-	get /users/id/:id (reqUserId) returns (user)
-	
-	@handler GetAllUsers
-	get /users returns ([]user)
+	//	@handler Register
+	//	post /api/v1/user/register (reqUser) returns (commResp)
+	//
+	//	@handler Detail
+	//	get /api/v1/user/detail
+	//
+	//	@handler Update
+	//	patch /api/v1/user/update
 }

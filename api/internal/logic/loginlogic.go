@@ -2,7 +2,6 @@ package logic
 
 import (
 	"context"
-	"github.com/golang-jwt/jwt"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"net/http"
@@ -26,16 +25,6 @@ func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) LoginLogic {
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
-}
-
-func (l *LoginLogic) getJwtToken(secretKey string, iat, seconds, userId int64) (string, error) {
-	claims := make(jwt.MapClaims)
-	claims["exp"] = iat + seconds
-	claims["iat"] = iat
-	claims["userId"] = userId
-	token := jwt.New(jwt.SigningMethodHS256)
-	token.Claims = claims
-	return token.SignedString([]byte(secretKey))
 }
 
 func (l *LoginLogic) Login(req types.ReqUserLogin) (*types.RespUserLogin, error) {
@@ -103,7 +92,7 @@ func (l *LoginLogic) Login(req types.ReqUserLogin) (*types.RespUserLogin, error)
 		// 生成token
 		now := time.Now().Unix()
 		// accessExpire := l.svcCtx.Config.Auth.AccessExpire
-		jwtToken, err := l.getJwtToken(l.svcCtx.Config.Auth.AccessSecret, now, l.svcCtx.Config.Auth.AccessExpire, resp.Id)
+		jwtToken, err := getJwtToken(l.svcCtx.Config.Auth.AccessSecret, now, l.svcCtx.Config.Auth.AccessExpire, resp.Id)
 		if err != nil {
 			loginMessage := types.LoginMessage{}
 			loginStatus := types.LoginMeta{
@@ -136,8 +125,8 @@ func (l *LoginLogic) Login(req types.ReqUserLogin) (*types.RespUserLogin, error)
 
 	loginMessage := types.LoginMessage{}
 	loginStatus := types.LoginMeta{
-		Msg:    "生成token失败",
-		Status: http.StatusInternalServerError,
+		Msg:    "用户密码错误,登录失败",
+		Status: http.StatusBadRequest,
 	}
 	return &types.RespUserLogin{
 		LoginMessage: loginMessage,

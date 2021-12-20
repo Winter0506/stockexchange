@@ -7,28 +7,6 @@ info(
 	email: "1569770895@qq.com"
 )
 
-type respUserLogin {
-	LoginMessage
-	LoginMeta
-}
-
-type reqUserLogin {
-	Email    string `json:"email" binding:"required, email"`
-	Password string `json:"password" binding:"required, min=6, max=10"`
-}
-
-// json 和 form 体现在代码上的区别
-// https://github.com/zeromicro/zero-doc/blob/main/go-zero.dev/cn/mapping.md 会对参数进行校验
-type reqUserRegister {
-	UserName string `json:"username" binding:"required,max=10"`
-	Password string `json:"password" binding:"required, min=6, max=10"`
-	Email    string `json:"email" binding:"required, email"`
-	Gender   string `json:"password" binding:"required"`
-	Code     string `json:"code" binding:"required,min=6,max=6"`
-	//	Captcha   string `form:"captcha" json:"captcha" binding:"required,min=4,max=4"`
-	//	CaptchaId string `form:"captcha_id" json:"captcha_id" binding:"required"`
-}
-
 type LoginMessage {
 	Id          int64  `json:"id"`
 	Username    string `json:"username"`
@@ -44,13 +22,65 @@ type LoginMeta {
 	Status int16  `json:"status"`
 }
 
+// 每次改了 都要在types.go 重写
+//type RespUserLogin struct {
+//	LoginMessage `json:"message"`
+//	LoginMeta    `json:"meta"`
+//}
+type respUserLogin {
+	LoginMessage
+	LoginMeta
+}
+
+type reqUserLogin {
+	Email    string `json:"email" binding:"required, email"`
+	Password string `json:"password" binding:"required, min=6, max=10"`
+}
+
+// json 和 form 体现在代码上的区别? 这个再看文档 现在只用 json  参数校验后面再改
+// https://github.com/zeromicro/zero-doc/blob/main/go-zero.dev/cn/mapping.md 会对参数进行校验
+type reqUserRegister {
+	UserName string `json:"username" binding:"required,max=10"`
+	Password string `json:"password" binding:"required, min=6, max=10"`
+	Email    string `json:"email" binding:"required, email"`
+	Gender   string `json:"gender" binding:"required"`
+	// 短信/邮箱 验证码
+	// Code      string `json:"code" binding:"required,min=6,max=6"`
+	Captcha   string `json:"captcha" binding:"required,min=4,max=4"`
+	CaptchaId string `json:"captcha_id" binding:"required"`
+}
+
+type respCaptha {
+	Captcha   string `json:"captcha" binding:"required,min=4,max=4"`
+	CaptchaId string `json:"captcha_id" binding:"required"`
+	Msg       string `json:"msg""`
+	Status    int16  `json:"status"`
+}
+
 // 这只是一个service  其他的service怎么办? 事实上只能有一个service
 // 执行命令 goctl api -o stockexchange.api   创建 blog.api 文件。
 // 执行命令 goctl api go -api stockexchange.api -dir . 生成 api 相关代码
 service stockexchange {
 	// 还没有写的路由
+	// **这三个功能都需要jwt鉴权**
+	// 获取所有用户列表
+	// 删除用户
+	// 更新用户
+	//
+	//	@handler Detail
+	//	get /api/v1/user/detail
+	//
+	//	@handler Update
+	//	patch /api/v1/user/update
+
+
 	//	@handler GetUserList
 	//	get /api/v1/user returns ([]userInfoResponse)
+	
+	// 注册之前需要先请求图片验证码  短信/邮箱 验证码在其之后
+	// 为了进度 先忽略 这部分功能
+	@handler Captcha
+	get /api/v1/base/captcha returns (respCaptha)
 	
 	@handler Login
 	post /api/v1/user/login (reqUserLogin) returns (respUserLogin)
@@ -58,10 +88,4 @@ service stockexchange {
 	// 注册的时候也不用写Auth 与 jwt  同时注册成功直接就可以相当于 登录完成
 	@handler Register
 	post /api/v1/user/register (reqUserRegister) returns (respUserLogin)
-	//
-	//	@handler Detail
-	//	get /api/v1/user/detail
-	//
-	//	@handler Update
-	//	patch /api/v1/user/update
 }

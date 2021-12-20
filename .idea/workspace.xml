@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.17_完成api中的登录与测试">
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.17_完成api中注册思路">
+      <change afterPath="$PROJECT_DIR$/api/internal/handler/captchahandler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/internal/logic/captchalogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/internal/logic/getJwtToken.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/handler/loginhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/loginhandler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/internal/handler/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/routes.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/internal/logic/loginlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/loginlogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/logic/registerlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/registerlogic.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/internal/types/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/types/types.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/utils/chaptcha.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/utils/chaptcha.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/stockexchange.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/stockexchange.api" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/getuserbyemaillogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/getuserbyemaillogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/getuserbyidlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/getuserbyidlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/getuserbynamelogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/getuserbynamelogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/getuserlistlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/getuserlistlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/user.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/user/user.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/user/user.pb.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +115,8 @@
     <MESSAGE value="21.12.15_完成model的编写和测试" />
     <MESSAGE value="21.12.17_完成api中的登录" />
     <MESSAGE value="21.12.17_完成api中的登录与测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="21.12.17_完成api中的登录与测试" />
+    <MESSAGE value="21.12.17_完成api中注册思路" />
+    <option name="LAST_COMMIT_MESSAGE" value="21.12.17_完成api中注册思路" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

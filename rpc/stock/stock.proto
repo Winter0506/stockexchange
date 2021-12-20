@@ -1,0 +1,113 @@
+syntax = "proto3";
+
+package user;
+
+import public "google/protobuf/timestamp.proto";
+
+// import "google/protobuf/empty.proto";  无法使用,直接找的Empty代替
+// 把id全部改成int64
+
+
+// 股票 信息 <号码 名称  只有这两个需要放入mysql>
+// redis 里面放什么 redis里面 号码 名称 其他的我都先不放
+
+service User{
+  rpc GetStockList(PageInfo) returns (StockListResponse); // 股票列表
+  rpc GetStockByCode(CodeRequest) returns (StockInfoResponse); //通过股票代码查询股票
+  rpc GetStockByName(NameRequest) returns (StockInfoResponse); //通过股票名称查询股票
+  rpc GetStockById(IdRequest) returns (StockInfoResponse); //通过id查询股票
+  rpc CreateStock(CreateStockInfo) returns (StockInfoResponse); // 添加股票
+  rpc UpdateStock(UpdateStockInfo) returns (Empty); // 更新股票
+}
+
+message Empty {}
+
+message PageInfo {
+  uint32 pn = 1;
+  uint32 pSize = 2;
+}
+
+message CodeRequest {
+  string code = 1;
+}
+
+message NameRequest {
+  string name = 1;
+}
+
+message IdRequest {
+  int64 id = 1;
+}
+
+message CreateStockInfo {
+  string stockName = 1;
+  string stockCode = 2;
+}
+
+message UpdateStockInfo {
+  int64 id = 1;
+  string stockName = 2;
+  string stockCode = 3;
+}
+
+message BasicInfo {
+  // 基础信息
+  float  todayOpenPrice = 1;
+  float  lastClosePrice = 2;
+  float  presentPrice = 3;
+  float  highPrice = 4;
+  float  lowPrice = 5;
+  float  currentBuyPrice = 6;  // 当前竞买价
+  float  currentSellPrice = 7; // 当前竞卖价
+  int32  transCount = 8; // 成交股数
+  float  transAmount = 9; // 成交金额
+}
+
+message FiveBuyInfo {
+  // 买的 五个
+  int32  buyOneCount = 1; // 买一股数
+  float  buyOnePrice = 2;
+  int32  buyTwoCount = 3; // 买二股数
+  float  buyTwoPrice = 4;
+  int32  buyThreeCount = 5; // 买三股数
+  float  buyThreePrice = 6;
+  int32  buyFourCount = 7; // 买四股数
+  float  buyFourPrice = 8;
+  int32  buyFiveCount = 9; // 买五股数
+  float  buyFivePrice = 10;
+}
+
+message FiveSellInfo {
+  // 卖的五个
+  int32  sellOneCount = 1; // 卖一股数
+  float  sellOnePrice = 2;
+  int32  sellTwoCount = 3; // 卖二股数
+  float  sellTwoPrice = 4;
+  int32  sellThreeCount = 5; // 卖三股数
+  float  sellThreePrice = 6;
+  int32  sellFourCount = 7; // 卖四股数
+  float  sellFourPrice = 8;
+  int32  sellFiveCount = 9; // 卖五股数
+  float  sellFivePrice = 10;
+}
+
+message StockInfoResponse {
+  int32 id = 1;
+  string stockName = 2;
+  string stockCode = 3;
+  FiveBuyInfo fiveBuyInfo = 4;
+  FiveSellInfo fiveSellInfo = 5;
+
+  google.protobuf.Timestamp Time = 6; //收集时间
+}
+
+message StockBriefInfoResponse {
+  int32 id = 1;
+  string stockName = 2;
+  string stockCode = 3;
+}
+
+message StockListResponse {
+  int32 total = 1;
+  repeated StockBriefInfoResponse data = 2;
+}

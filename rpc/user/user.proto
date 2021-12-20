@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package user;
+package stock;
 
 // import "google/protobuf/empty.proto";  无法使用,直接找的Empty代替
 // 把id全部改成int64
@@ -12,7 +12,6 @@ service User{
   rpc GetUserById(IdRequest) returns (UserInfoResponse); //通过id查询用户
   rpc CreateUser(CreateUserInfo) returns (UserInfoResponse); // 添加用户
   rpc UpdateUser(UpdateUserInfo) returns (Empty); // 更新用户 删除用户也可以用更新用户逻辑来做
-  rpc CheckPassWord(PasswordCheckInfo) returns (CheckResponse); //检查密码  登录利用检查密码
 }
 
 message Empty {}

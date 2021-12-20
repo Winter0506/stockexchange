@@ -45,6 +45,7 @@ func Paginate(page, pageSize int) func(db *gorm.DB) *gorm.DB {
 
 func (l *GetUserListLogic) GetUserList(in *user.PageInfo) (*user.UserListResponse, error) {
 	// 自己逻辑上实现分页
+	// TODO 这里不能一下子把所有都查出来  要使用gorm分页? 或者 自己实现gozero分页
 	all, err := l.svcCtx.Model.FindAll()
 
 	if err != nil {

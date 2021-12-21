@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"stockexchange/rpc/stock/internal/svc"
-	"stockexchange/rpc/stock/user"
+	"stockexchange/rpc/stock/stock"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -23,8 +23,8 @@ func NewGetStockListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetS
 	}
 }
 
-func (l *GetStockListLogic) GetStockList(in *user.PageInfo) (*user.StockListResponse, error) {
+func (l *GetStockListLogic) GetStockList(in *stock.PageInfo) (*stock.StockListResponse, error) {
 	// todo: add your logic here and delete this line
 
-	return &user.StockListResponse{}, nil
+	return &stock.StockListResponse{}, nil
 }

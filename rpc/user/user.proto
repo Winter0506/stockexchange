@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package stock;
+package user;
 
 // import "google/protobuf/empty.proto";  无法使用,直接找的Empty代替
 // 把id全部改成int64

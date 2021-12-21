@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.20_完成api中用户注册 图片验证码实现">
-      <change afterPath="$PROJECT_DIR$/rpc/stock/etc/stock.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/config/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/createstocklogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbycodelogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbyidlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbynamelogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstocklistlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/updatestocklogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/server/userserver.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/svc/servicecontext.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/stock.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/stock.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/user/stock.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/userclient/user.go" afterDir="false" />
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.20_股票模块代码生成">
+      <change afterPath="$PROJECT_DIR$/rpc/model/stock.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/model/stockmodel.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/buildStockStruct.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/requestSinaApi.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/server/stockserver.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/stock/stockclient/stock.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/getuserlistlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/getuserlistlogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/stockexchange.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/stockexchange.api" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/request/requestStockV5.go" beforeDir="false" afterPath="$PROJECT_DIR$/demo/request/requestStockV5.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/etc/stock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/etc/stock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/config/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/createstocklogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/createstocklogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbycodelogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbycodelogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbyidlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbyidlogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbynamelogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbynamelogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/getstocklistlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstocklistlogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/updatestocklogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/updatestocklogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/server/userserver.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/svc/servicecontext.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/svc/servicecontext.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/stock.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/stock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/stock.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/stock.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/user/stock.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/stock/stock.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/userclient/user.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/getuserbyemaillogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/getuserbyemaillogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/user/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/user.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +133,8 @@
     <MESSAGE value="21.12.17_完成api中的登录与测试" />
     <MESSAGE value="21.12.17_完成api中注册思路" />
     <MESSAGE value="21.12.20_完成api中用户注册 图片验证码实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="21.12.20_完成api中用户注册 图片验证码实现" />
+    <MESSAGE value="21.12.20_股票模块代码生成" />
+    <option name="LAST_COMMIT_MESSAGE" value="21.12.20_股票模块代码生成" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

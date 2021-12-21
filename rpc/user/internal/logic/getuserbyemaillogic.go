@@ -38,5 +38,4 @@ func (l *GetUserByEmailLogic) GetUserByEmail(in *user.EmailRequest) (*user.UserI
 		Role:      int32(ret.Role), // role 就是1 和 2 二者之一
 		IsDeleted: int32(ret.IsDeleted),
 	}, nil
-	return &user.UserInfoResponse{}, nil
 }

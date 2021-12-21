@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"stockexchange/rpc/stock/internal/svc"
-	"stockexchange/rpc/stock/user"
+	"stockexchange/rpc/stock/stock"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -23,8 +23,8 @@ func NewGetStockByIdLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetS
 	}
 }
 
-func (l *GetStockByIdLogic) GetStockById(in *user.IdRequest) (*user.StockInfoResponse, error) {
+func (l *GetStockByIdLogic) GetStockById(in *stock.IdRequest) (*stock.StockInfoResponse, error) {
 	// todo: add your logic here and delete this line
 
-	return &user.StockInfoResponse{}, nil
+	return &stock.StockInfoResponse{}, nil
 }

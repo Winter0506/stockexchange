@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"stockexchange/rpc/stock/internal/svc"
-	"stockexchange/rpc/stock/user"
+	"stockexchange/rpc/stock/stock"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -23,8 +23,8 @@ func NewGetStockByNameLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Ge
 	}
 }
 
-func (l *GetStockByNameLogic) GetStockByName(in *user.NameRequest) (*user.StockInfoResponse, error) {
+func (l *GetStockByNameLogic) GetStockByName(in *stock.NameRequest) (*stock.StockInfoResponse, error) {
 	// todo: add your logic here and delete this line
 
-	return &user.StockInfoResponse{}, nil
+	return &stock.StockInfoResponse{}, nil
 }

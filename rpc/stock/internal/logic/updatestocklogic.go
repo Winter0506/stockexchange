@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"stockexchange/rpc/stock/internal/svc"
-	"stockexchange/rpc/stock/user"
+	"stockexchange/rpc/stock/stock"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -23,8 +23,8 @@ func NewUpdateStockLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Updat
 	}
 }
 
-func (l *UpdateStockLogic) UpdateStock(in *user.UpdateStockInfo) (*user.Empty, error) {
+func (l *UpdateStockLogic) UpdateStock(in *stock.UpdateStockInfo) (*stock.Empty, error) {
 	// todo: add your logic here and delete this line
 
-	return &user.Empty{}, nil
+	return &stock.Empty{}, nil
 }

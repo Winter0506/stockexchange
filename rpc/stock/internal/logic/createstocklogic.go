@@ -2,9 +2,8 @@ package logic
 
 import (
 	"context"
-
 	"stockexchange/rpc/stock/internal/svc"
-	"stockexchange/rpc/stock/user"
+	"stockexchange/rpc/stock/stock"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -23,8 +22,8 @@ func NewCreateStockLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Creat
 	}
 }
 
-func (l *CreateStockLogic) CreateStock(in *user.CreateStockInfo) (*user.StockInfoResponse, error) {
+func (l *CreateStockLogic) CreateStock(in *stock.CreateStockInfo) (*stock.StockInfoResponse, error) {
 	// todo: add your logic here and delete this line
-
-	return &user.StockInfoResponse{}, nil
+	// 第一次 输入代码时候才 创建 这个创建先不写
+	return &stock.StockInfoResponse{}, nil
 }

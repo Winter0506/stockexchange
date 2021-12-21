@@ -1,8 +1,9 @@
 syntax = "proto3";
 
-package user;
+package stock;
 
 import public "google/protobuf/timestamp.proto";
+//goctl rpc proto -src stock.proto -dir .
 
 // import "google/protobuf/empty.proto";  无法使用,直接找的Empty代替
 // 把id全部改成int64
@@ -11,7 +12,7 @@ import public "google/protobuf/timestamp.proto";
 // 股票 信息 <号码 名称  只有这两个需要放入mysql>
 // redis 里面放什么 redis里面 号码 名称 其他的我都先不放
 
-service User{
+service Stock{
   rpc GetStockList(PageInfo) returns (StockListResponse); // 股票列表
   rpc GetStockByCode(CodeRequest) returns (StockInfoResponse); //通过股票代码查询股票
   rpc GetStockByName(NameRequest) returns (StockInfoResponse); //通过股票名称查询股票
@@ -95,10 +96,11 @@ message StockInfoResponse {
   int32 id = 1;
   string stockName = 2;
   string stockCode = 3;
-  FiveBuyInfo fiveBuyInfo = 4;
-  FiveSellInfo fiveSellInfo = 5;
+  BasicInfo baseInfo = 4;
+  FiveBuyInfo fiveBuyInfo = 5;
+  FiveSellInfo fiveSellInfo = 6;
 
-  google.protobuf.Timestamp Time = 6; //收集时间
+  google.protobuf.Timestamp Time = 7; //收集时间
 }
 
 message StockBriefInfoResponse {

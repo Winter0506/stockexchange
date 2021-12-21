@@ -63,9 +63,10 @@ type respCaptha {
 service stockexchange {
 	// 还没有写的路由
 	// **这三个功能都需要jwt鉴权**
-	// 获取所有用户列表
-	// 删除用户
-	// 更新用户
+	// **获取所有用户列表**
+	// **获取用户详细信息**
+	// **删除用户**
+	// **更新用户**
 	//
 	//	@handler Detail
 	//	get /api/v1/user/detail

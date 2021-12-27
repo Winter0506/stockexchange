@@ -29,11 +29,11 @@ message PageInfo {
 }
 
 message CodeRequest {
-  string code = 1;
+  string stockCode = 1;
 }
 
 message NameRequest {
-  string name = 1;
+  string stockName = 1;
 }
 
 message IdRequest {
@@ -49,6 +49,7 @@ message UpdateStockInfo {
   int64 id = 1;
   string stockName = 2;
   string stockCode = 3;
+  int32  isDeleted = 4;
 }
 
 message BasicInfo {
@@ -103,13 +104,7 @@ message StockInfoResponse {
   google.protobuf.Timestamp Time = 7; //收集时间
 }
 
-message StockBriefInfoResponse {
-  int32 id = 1;
-  string stockName = 2;
-  string stockCode = 3;
-}
-
 message StockListResponse {
   int32 total = 1;
-  repeated StockBriefInfoResponse data = 2;
+  repeated StockInfoResponse data = 2;
 }

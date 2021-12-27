@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/tal-tech/go-zero/core/stores/sqlx"
 	"stockexchange/rpc/stock/internal/svc"
 	"stockexchange/rpc/stock/stock"
 )
@@ -23,28 +24,29 @@ func NewGetStockByCodeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Ge
 }
 
 func (l *GetStockByCodeLogic) GetStockByCode(in *stock.CodeRequest) (*stock.StockInfoResponse, error) {
-	// todo: add your logic here and delete this line
 	// 先查找信息  再在数据库中查询
-	stockSlice, err := requestApi(in.Code)
-	if err == errors.New("错误股票代码") {
-		return nil, err
-	}
+	stockSlice, err := requestApi(in.StockCode)
+	//if err == errors.New("错误股票代码") {
+	//	return nil, err
+	//}
 	if err != nil {
 		return nil, errors.New("查询股票行情错误")
 	}
 
-	ret, err := l.svcCtx.Model.FindOneByStockcode(in.Code)
-	// TODO 在上层 如果没有 就创建 并返回
-	/*if ret == nil && err == sqlx.ErrNotFound {
-		// 说明数据库里没有 我们需要去添加
-		// 调用 创建方法 在上一层中做
-	}*/
+	ret, err := l.svcCtx.Model.FindOneByStockcode(in.StockCode)
+
+	// 只有这种情况才回去创建股票
+	if ret == nil && err == sqlx.ErrNotFound {
+		if err := createStock(l, stockSlice[0], in.StockCode); err != nil {
+			return nil, errors.New("查询股票行情错误") // 实际上是创建错误 把信息不暴露给用户
+		}
+	}
 	if err != nil {
 		return nil, err
 	}
 
 	baseInfo, fiveBuyInfo, fiveSellInfo := buildStockStruct(stockSlice)
-	priceTime, err := TimestampProto(stockSlice[32])
+	priceTime, err := TimestampProto(stockSlice[31], stockSlice[32])
 	if err != nil {
 		return nil, err
 	}

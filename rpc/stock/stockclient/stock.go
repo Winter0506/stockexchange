@@ -13,19 +13,18 @@ import (
 )
 
 type (
-	BasicInfo              = stock.BasicInfo
-	CodeRequest            = stock.CodeRequest
-	CreateStockInfo        = stock.CreateStockInfo
-	Empty                  = stock.Empty
-	FiveBuyInfo            = stock.FiveBuyInfo
-	FiveSellInfo           = stock.FiveSellInfo
-	IdRequest              = stock.IdRequest
-	NameRequest            = stock.NameRequest
-	PageInfo               = stock.PageInfo
-	StockBriefInfoResponse = stock.StockBriefInfoResponse
-	StockInfoResponse      = stock.StockInfoResponse
-	StockListResponse      = stock.StockListResponse
-	UpdateStockInfo        = stock.UpdateStockInfo
+	BasicInfo         = stock.BasicInfo
+	CodeRequest       = stock.CodeRequest
+	CreateStockInfo   = stock.CreateStockInfo
+	Empty             = stock.Empty
+	FiveBuyInfo       = stock.FiveBuyInfo
+	FiveSellInfo      = stock.FiveSellInfo
+	IdRequest         = stock.IdRequest
+	NameRequest       = stock.NameRequest
+	PageInfo          = stock.PageInfo
+	StockInfoResponse = stock.StockInfoResponse
+	StockListResponse = stock.StockListResponse
+	UpdateStockInfo   = stock.UpdateStockInfo
 
 	Stock interface {
 		GetStockList(ctx context.Context, in *PageInfo, opts ...grpc.CallOption) (*StockListResponse, error)

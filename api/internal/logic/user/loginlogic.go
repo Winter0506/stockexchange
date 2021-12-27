@@ -1,4 +1,4 @@
-package logic
+package user
 
 import (
 	"context"
@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"stockexchange/api/internal/svc"
 	"stockexchange/api/internal/types"
+	"stockexchange/api/internal/utils"
 	"stockexchange/rpc/user/user"
 	"time"
 
@@ -92,7 +93,7 @@ func (l *LoginLogic) Login(req types.ReqUserLogin) (*types.RespUserLogin, error)
 		// 生成token
 		now := time.Now().Unix()
 		// accessExpire := l.svcCtx.Config.Auth.AccessExpire
-		jwtToken, err := getJwtToken(l.svcCtx.Config.Auth.AccessSecret, now, l.svcCtx.Config.Auth.AccessExpire, resp.Id)
+		jwtToken, err := utils.GetJwtToken(l.svcCtx.Config.Auth.AccessSecret, now, l.svcCtx.Config.Auth.AccessExpire, resp.Id)
 		if err != nil {
 			loginMessage := types.LoginMessage{}
 			loginStatus := types.LoginMeta{

@@ -1,24 +1,24 @@
-package handler
+package stock
 
 import (
 	"net/http"
 
 	"github.com/tal-tech/go-zero/rest/httpx"
-	"stockexchange/api/internal/logic"
+	"stockexchange/api/internal/logic/stock"
 	"stockexchange/api/internal/svc"
 	"stockexchange/api/internal/types"
 )
 
-func RegisterHandler(ctx *svc.ServiceContext) http.HandlerFunc {
+func CreateHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.ReqUserRegister
+		var req types.ReqStockCreate
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.Error(w, err)
 			return
 		}
 
-		l := logic.NewRegisterLogic(r.Context(), ctx)
-		resp, err := l.Register(req)
+		l := stock.NewCreateLogic(r.Context(), ctx)
+		resp, err := l.Create(req)
 		if err != nil {
 			httpx.Error(w, err)
 		} else {

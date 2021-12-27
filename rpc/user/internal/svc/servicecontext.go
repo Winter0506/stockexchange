@@ -6,8 +6,8 @@ import (
 	//"gorm.io/gorm/schema"
 	//"github.com/go-sql-driver/mysql"
 	"github.com/tal-tech/go-zero/core/stores/sqlx"
-	"stockexchange/rpc/model"
 	"stockexchange/rpc/user/internal/config"
+	"stockexchange/rpc/user/model"
 )
 
 type ServiceContext struct {

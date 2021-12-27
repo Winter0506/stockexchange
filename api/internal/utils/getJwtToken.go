@@ -1,8 +1,8 @@
-package logic
+package utils
 
 import "github.com/golang-jwt/jwt"
 
-func getJwtToken(secretKey string, iat, seconds, userId int64) (string, error) {
+func GetJwtToken(secretKey string, iat, seconds, userId int64) (string, error) {
 	claims := make(jwt.MapClaims)
 	claims["exp"] = iat + seconds
 	claims["iat"] = iat

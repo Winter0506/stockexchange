@@ -55,6 +55,7 @@ func requestApi(code string) ([]string, error) {
 	stockSlice = append(append(append(stockSlice, stockNo), stockName), stockPriceSlice...)
 
 	defer resp.Body.Close()
+	// fmt.Println(stockSlice)
 	return stockSlice, nil
 }
 

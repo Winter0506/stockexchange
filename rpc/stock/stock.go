@@ -22,6 +22,7 @@ var configFile = flag.String("f", "etc/stock.yaml", "the config file")
  先实现基础逻辑  后面的 热门选型  分类都要在这儿做
  先从redis中找 redis找不到在到mysql找 再放进mysql?
 */
+// go run stock.go -f etc/stock.yaml
 func main() {
 	flag.Parse()
 

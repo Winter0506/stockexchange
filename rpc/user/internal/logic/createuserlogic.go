@@ -8,8 +8,8 @@ import (
 	"github.com/anaskhan96/go-password-encoder"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"stockexchange/rpc/model"
 	"stockexchange/rpc/user/internal/svc"
+	"stockexchange/rpc/user/model"
 	"stockexchange/rpc/user/user"
 	"time"
 

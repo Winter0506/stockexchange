@@ -3,8 +3,8 @@ package logic
 import (
 	"context"
 	"database/sql"
-	"stockexchange/rpc/model"
 	"stockexchange/rpc/user/internal/svc"
+	"stockexchange/rpc/user/model"
 	"stockexchange/rpc/user/user"
 	"time"
 

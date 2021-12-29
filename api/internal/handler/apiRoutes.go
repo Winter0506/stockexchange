@@ -18,12 +18,22 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/v1/stock/:id",
 				Handler: stock.DetailHandler(serverCtx),
 			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/api/v1/stock/create",
-				Handler: stock.CreateHandler(serverCtx),
-			},
 		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.Admin},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/api/v1/stock/create",
+					Handler: stock.CreateHandler(serverCtx),
+				},
+			}...,
+		),
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 	server.AddRoutes(
 		[]rest.Route{

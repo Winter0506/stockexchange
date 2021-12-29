@@ -3,6 +3,8 @@ package logic
 import (
 	"context"
 	"errors"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"stockexchange/rpc/stock/internal/svc"
 	"stockexchange/rpc/stock/model"
 	"stockexchange/rpc/stock/stock"
@@ -31,10 +33,15 @@ func (l *CreateStockLogic) CreateStock(in *stock.CreateStockInfo) (*stock.StockI
 	if err == errors.New("错误股票代码") {
 		return nil, err
 	}
-	if err != nil {
-		return nil, errors.New("创建股票错误")
+	hasStockNameInfo, err := l.svcCtx.Model.FindOneByStockname(in.StockName)
+	if hasStockNameInfo != nil {
+		return nil, status.Errorf(codes.AlreadyExists, "股票信息已存在")
 	}
-
+	hasStockCodeInfo, err := l.svcCtx.Model.FindOneByStockcode(in.StockCode)
+	if hasStockCodeInfo != nil {
+		return nil, status.Errorf(codes.AlreadyExists, "股票信息已存在")
+	}
+	// 这些rpc错误都得这么改
 	ret, err := l.svcCtx.Model.Insert(&model.Stock{
 		Stockname: in.StockName,
 		Stockcode: in.StockCode,

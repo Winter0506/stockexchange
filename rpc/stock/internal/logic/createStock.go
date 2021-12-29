@@ -8,7 +8,15 @@ import (
 )
 
 func createStock(l *GetStockByCodeLogic, stockName, stockCode string) error {
-	_, err := l.svcCtx.Model.Insert(&model.Stock{
+	hasStockNameInfo, err := l.svcCtx.Model.FindOneByStockname(stockName)
+	if hasStockNameInfo != nil {
+		return errors.New("股票信息已存在")
+	}
+	hasStockCodeInfo, err := l.svcCtx.Model.FindOneByStockcode(stockCode)
+	if hasStockCodeInfo != nil {
+		return errors.New("股票信息已存在")
+	}
+	_, err = l.svcCtx.Model.Insert(&model.Stock{
 		Stockname: stockName,
 		Stockcode: stockCode,
 		CreatedAt: time.Now(),

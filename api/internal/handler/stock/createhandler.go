@@ -1,6 +1,7 @@
 package stock
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/tal-tech/go-zero/rest/httpx"
@@ -12,7 +13,9 @@ import (
 func CreateHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req types.ReqStockCreate
+
 		if err := httpx.Parse(r, &req); err != nil {
+			fmt.Println(req)
 			httpx.Error(w, err)
 			return
 		}

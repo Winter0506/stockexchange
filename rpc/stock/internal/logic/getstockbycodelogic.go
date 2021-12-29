@@ -5,6 +5,8 @@ import (
 	"errors"
 	"github.com/tal-tech/go-zero/core/logx"
 	"github.com/tal-tech/go-zero/core/stores/sqlx"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"stockexchange/rpc/stock/internal/svc"
 	"stockexchange/rpc/stock/stock"
 )
@@ -38,7 +40,7 @@ func (l *GetStockByCodeLogic) GetStockByCode(in *stock.CodeRequest) (*stock.Stoc
 	// 只有这种情况才回去创建股票
 	if ret == nil && err == sqlx.ErrNotFound {
 		if err := createStock(l, stockSlice[0], in.StockCode); err != nil {
-			return nil, errors.New("查询股票行情错误") // 实际上是创建错误 把信息不暴露给用户
+			return nil, status.Errorf(codes.AlreadyExists, "股票信息已存在") // 实际上是创建错误 把信息不暴露给用户
 		}
 	}
 	if err != nil {

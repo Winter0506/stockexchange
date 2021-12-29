@@ -33,7 +33,7 @@ func NewCreateUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Create
 func (l *CreateUserLogic) CreateUser(in *user.CreateUserInfo) (*user.UserInfoResponse, error) {
 	// 1.先查询用户id或者email是否已经被使用
 	hasUserNameInfo, err := l.svcCtx.Model.FindOneByUsername(in.UserName)
-	fmt.Println(hasUserNameInfo)
+	// fmt.Println(hasUserNameInfo)
 	if hasUserNameInfo != nil {
 		return nil, status.Errorf(codes.AlreadyExists, "用户名已存在")
 	}

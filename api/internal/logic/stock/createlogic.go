@@ -3,6 +3,7 @@ package stock
 import (
 	"context"
 	"errors"
+	"fmt"
 	"net/http"
 	"stockexchange/rpc/stock/stock"
 
@@ -26,8 +27,27 @@ func NewCreateLogic(ctx context.Context, svcCtx *svc.ServiceContext) CreateLogic
 	}
 }
 
+/*
+func (m *CheckCodeMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		body, _ := ioutil.ReadAll(r.Body)
+		var stock map[string]interface{}
+		json.Unmarshal(body, &stock)
+		stockCode := stock["stockCode"].(string)
+		if !strings.HasPrefix(stockCode, "sh") && !strings.HasPrefix(stockCode, "bj") && !strings.HasPrefix(stockCode, "sz") {
+			// Passthrough to next handler if need
+			httpx.Error(w, errStockCode)
+			return
+		}
+		r.Body.Close() //  must close
+		// request body 只能读取一次  不推荐这样做
+		r.Body=ioutil.NopCloser(bytes.NewBuffer(body))
+		next(w, r)
+	}
+}
+*/
 func (l *CreateLogic) Create(req types.ReqStockCreate) (*types.RespStockDetail, error) {
-	// todo: add your logic here and delete this line
+	fmt.Println(req.StockCode, req.StockName)
 	resp, err := l.svcCtx.Stock.CreateStock(l.ctx, &stock.CreateStockInfo{
 		StockName: req.StockName,
 		StockCode: req.StockCode,
@@ -44,7 +64,7 @@ func (l *CreateLogic) Create(req types.ReqStockCreate) (*types.RespStockDetail, 
 		return &types.RespStockDetail{
 			DetailMessage: detailMessage,
 			DetailMeta:    detailStatus,
-		}, errors.New("create fail")
+		}, errors.New("创建股票失败")
 	}
 	return &types.RespStockDetail{
 		DetailMessage: types.DetailMessage{

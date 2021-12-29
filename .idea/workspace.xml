@@ -1,50 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.21_股票模块查询id">
-      <change afterPath="$PROJECT_DIR$/api/internal/types/stocks.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/internal/types/users.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/stock.api" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/user.api" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/createStock.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/model/stock.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/model/stockmodel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/stock/model/vars.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/user/model/user.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/user/model/usermodel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/user/model/vars.go" afterDir="false" />
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.27_股票创建查询完成">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/etc/stockexchange.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/etc/stockexchange.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/handler/captchahandler.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/handler/loginhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/user/loginhandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/handler/registerhandler.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/handler/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/captchalogic.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/getJwtToken.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/utils/getJwtToken.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/loginlogic.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/registerlogic.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/handler/stock/createhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/stock/createhandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/logic/stock/createlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/stock/createlogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/loginlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/loginlogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/registerlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/registerlogic.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/internal/svc/servicecontext.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/svc/servicecontext.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/types/types.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/stockexchange.api" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/model/stockmodel.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/stockmodel.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/buildStockStruct.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/buildStockStruct.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/utils/getJwtToken.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/utils/getJwtToken.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/stock.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/stock.api" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/createStock.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/createStock.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/createstocklogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/createstocklogic.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbycodelogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbycodelogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbyidlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbyidlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbynamelogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstockbynamelogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/getstocklistlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/getstocklistlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/requestSinaApi.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/requestSinaApi.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/updatestocklogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/updatestocklogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/svc/servicecontext.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/svc/servicecontext.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/stock.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/stock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/stock.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/stock.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/stock/stock.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/stock/stock.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/stockclient/stock.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/stockclient/stock.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/createuserlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/createuserlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/internal/svc/servicecontext.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/svc/servicecontext.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +39,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="21iXdhcosfSxMWjYBabvznGXMh1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -85,14 +58,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/rpc/stock/model" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/stockexchange.go" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -119,6 +92,16 @@
       <filePath value="$PROJECT_DIR$" />
       <package value="stockexchnage" />
       <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build stockexchange.go" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="stockexchange" />
+      <working_directory value="$PROJECT_DIR$/api" />
+      <parameters value="stockexchange.go -f D:\Go\GOPATH\src\stockexchange\api\etc\stockexchange.yaml" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$/api/stockexchange.go" />
+      <package value="stockexchnage" />
+      <directory value="$PROJECT_DIR$/api" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
@@ -160,7 +143,8 @@
     <MESSAGE value="21.12.20_完成api中用户注册 图片验证码实现" />
     <MESSAGE value="21.12.20_股票模块代码生成" />
     <MESSAGE value="21.12.21_股票模块查询id" />
-    <option name="LAST_COMMIT_MESSAGE" value="21.12.21_股票模块查询id" />
+    <MESSAGE value="21.12.27_股票创建查询完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="21.12.27_股票创建查询完成" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -174,9 +158,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/api/internal/middleware/adminmiddleware.go</url>
+          <line>30</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/rpc/stock/internal/logic/createstocklogic.go</url>
-          <line>2</line>
-          <option name="timeStamp" value="1" />
+          <line>35</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

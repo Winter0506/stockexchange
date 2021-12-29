@@ -59,19 +59,29 @@ type (
 )
 
 @server (
+	jwt: Auth
 	group: stock
 )
 service stock-api {
 	@handler detail
 	get /api/v1/stock/:id (reqStockId) returns (respStockDetail)
-	
-	// 这个创建需要jwt 和 auth 验证 必须管理员才能创建
-	@handler create
-	post /api/v1/stock/create (reqStockCreate) returns (respStockDetail)
-	
 	// 股票相关
 	// 获取详情 需要 外包一层 代码获取
 	// 列表获取  这个需要看用户相关 先不实现
 	// 名字获取 代码获取 这两个都是在搜索中实现 而且用户相关的里面只携带股票id
 	// 修改 添加 需要验证用户权限
+}
+
+// goctl api go -api stock.api -dir .
+// 这个创建需要jwt 和 auth 验证 必须管理员才能创建
+@server (
+	// -H 'authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6I'
+	jwt: Auth
+	// 验证管理员 与 配置跨域  还有参数校验
+	middleware: Admin
+	group: stock
+)
+service stock-api {
+	@handler create
+	post /api/v1/stock/create (reqStockCreate) returns (respStockDetail)
 }

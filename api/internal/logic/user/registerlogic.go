@@ -64,7 +64,7 @@ func (l *RegisterLogic) Register(req types.ReqUserRegister) (*types.RespUserLogi
 	// 生成token  准备返回用户信息
 	now := time.Now().Unix()
 	// accessExpire := l.svcCtx.Config.Auth.AccessExpire
-	jwtToken, err := utils.GetJwtToken(l.svcCtx.Config.Auth.AccessSecret, now, l.svcCtx.Config.Auth.AccessExpire, resp.Id)
+	jwtToken, err := utils.GetJwtToken(l.svcCtx.Config.Auth.AccessSecret, now, l.svcCtx.Config.Auth.AccessExpire, resp.Id, resp.Role)
 	if err != nil {
 		loginMessage := types.LoginMessage{}
 		loginStatus := types.LoginMeta{

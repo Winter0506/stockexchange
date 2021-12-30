@@ -29,7 +29,9 @@ func main() {
 	conf.MustLoad(*configFile, &c)
 
 	ctx := svc.NewServiceContext(c)
-	server := rest.MustNewServer(c.RestConf)
+	// 配置跨域
+	// github中他人实现: https://github.com/zeromicro/go-zero/issues/422
+	server := rest.MustNewServer(c.RestConf, rest.WithCors())
 	defer server.Stop()
 
 	handler.RegisterHandlers(server, ctx)

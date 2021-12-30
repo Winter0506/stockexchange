@@ -12,6 +12,7 @@ service User{
   rpc GetUserById(IdRequest) returns (UserInfoResponse); //通过id查询用户
   rpc CreateUser(CreateUserInfo) returns (UserInfoResponse); // 添加用户
   rpc UpdateUser(UpdateUserInfo) returns (Empty); // 更新用户 删除用户也可以用更新用户逻辑来做
+  rpc CheckPassWord(PasswordCheckInfo) returns (CheckResponse);
 }
 
 message Empty {}
@@ -55,7 +56,8 @@ message UpdateUserInfo {
   string passWord = 3;
   string email = 4;
   string gender = 5;
-  int32 isDeleted = 6;
+  int32 role = 6;
+  int32 isDeleted = 7;
 }
 
 message UserInfoResponse {

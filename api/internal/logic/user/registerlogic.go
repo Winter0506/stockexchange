@@ -52,7 +52,7 @@ func (l *RegisterLogic) Register(req types.ReqUserRegister) (*types.RespUserLogi
 		// 一开始先建立结构体?
 		loginMessage := types.LoginMessage{}
 		loginStatus := types.LoginMeta{
-			Msg:    "注册用户失败",
+			Msg:    "注册用户失败,请更换邮箱或用户名",
 			Status: http.StatusInternalServerError,
 		}
 		return &types.RespUserLogin{

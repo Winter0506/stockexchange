@@ -77,7 +77,6 @@ service stock-api {
 @server (
 	// -H 'authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6I'
 	jwt: Auth
-	// 验证管理员 与 配置跨域  还有参数校验
 	middleware: Admin
 	group: stock
 )

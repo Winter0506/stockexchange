@@ -46,11 +46,11 @@ type (
 		Password  string       `db:"password"`   // 密码
 		Email     string       `db:"email"`      // 邮件
 		Gender    string       `db:"gender"`     // female表示女, male表示男
-		Role      int64        `db:"role"`       // 1表示普通用户, 2表示管理员
+		Role      int          `db:"role"`       // 1表示普通用户, 2表示管理员
 		CreatedAt sql.NullTime `db:"created_at"` // 创建时间
 		UpdatedAt sql.NullTime `db:"updated_at"` // 更新时间
 		DeletedAt sql.NullTime `db:"deleted_at"` // 删除时间
-		IsDeleted int64        `db:"isDeleted"`  // 是否删除, 0否1是
+		IsDeleted int          `db:"isDeleted"`  // 是否删除, 0否1是
 	}
 )
 

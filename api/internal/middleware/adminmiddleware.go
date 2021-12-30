@@ -33,7 +33,7 @@ func (m *AdminMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 			httpx.Error(w, errorUserInfo)
 			return
 		}
-		if roleInt != 1 {
+		if roleInt != 2 {
 			httpx.Error(w, authDeny)
 		} else {
 			next(w, r)

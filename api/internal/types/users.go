@@ -41,3 +41,38 @@ type RespCaptha struct {
 	Msg       string `json:"msg""`
 	Status    int16  `json:"status"`
 }
+
+type ReqUserId struct {
+	Id int32 `path:"id"`
+}
+
+type ReqUserUpdate struct {
+	Id       int    `json:"id"`
+	UserName string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
+	Gender   string `json:"gender"`
+}
+
+type RespUserDelete struct {
+	LoginMeta `json:meta`
+}
+
+type ReqUserUpdateAdmin struct {
+	Id       int    `json:"id"`
+	UserName string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
+	Gender   string `json:"gender"`
+	Role     int32  `json:"role"`
+}
+
+type ReqUserList struct {
+	Pn    int `json:"pn,default=0"`
+	PSize int `json:"psize,default=10"`
+}
+
+type RespUserList struct {
+	UserList  []string `json:"userlist"`
+	LoginMeta `json:"meta"`
+}

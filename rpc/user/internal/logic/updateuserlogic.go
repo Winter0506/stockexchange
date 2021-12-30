@@ -33,11 +33,11 @@ func (l *UpdateUserLogic) UpdateUser(in *user.UpdateUserInfo) (*user.Empty, erro
 	if in.IsDeleted != 0 {
 		err := l.svcCtx.Model.Update(&model.User{
 			Id:        in.Id,
-			Username:  in.UserName,
-			Password:  in.PassWord,
-			Email:     in.Email,
-			Gender:    in.Gender,
-			Role:      1, // TODO 更改用户为管理员应该有特别方法来执行
+			Username:  rsp.Username,
+			Password:  rsp.Password,
+			Email:     rsp.Email,
+			Gender:    rsp.Gender,
+			Role:      rsp.Role,
 			CreatedAt: createdTime,
 			UpdatedAt: updatedTime,
 			DeletedAt: sql.NullTime{
@@ -50,13 +50,19 @@ func (l *UpdateUserLogic) UpdateUser(in *user.UpdateUserInfo) (*user.Empty, erro
 			return nil, err
 		}
 	} else {
+		var role int
+		if in.Role == 0 {
+			role = rsp.Role
+		} else {
+			role = int(in.Role)
+		}
 		err := l.svcCtx.Model.Update(&model.User{
 			Id:        in.Id,
 			Username:  in.UserName,
 			Password:  in.PassWord,
 			Email:     in.Email,
 			Gender:    in.Gender,
-			Role:      1, // TODO 更改用户为管理员应该有特别方法来执行
+			Role:      role,
 			CreatedAt: createdTime,
 			UpdatedAt: sql.NullTime{
 				Time:  time.Now(),

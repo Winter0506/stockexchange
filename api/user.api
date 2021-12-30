@@ -34,54 +34,38 @@ type (
 	}
 
 	reqUserLogin {
-		Email    string `json:"email" binding:"required,email"`
-		Password string `json:"password" binding:"required,min=6, max=10"`
+		Email    string `json:"email"`
+		Password string `json:"password"`
 	}
 
 	// json 和 form 体现在代码上的区别? 这个再看文档 现在只用 json  参数校验后面再改
 	// https://github.com/zeromicro/zero-doc/blob/main/go-zero.dev/cn/mapping.md 会对参数进行校验
 	reqUserRegister {
-		UserName string `json:"username" binding:"required,max=10"`
-		Password string `json:"password" binding:"required, min=6, max=10"`
-		Email    string `json:"email" binding:"required, email"`
-		Gender   string `json:"gender" binding:"required"`
+		UserName string `json:"username"`
+		Password string `json:"password"`
+		Email    string `json:"email"`
+		Gender   string `json:"gender"`
 		// 短信/邮箱 验证码
-		// Code      string `json:"code" binding:"required,min=6,max=6"`
-		Captcha   string `json:"captcha" binding:"required,min=4,max=4"`
-		CaptchaId string `json:"captcha_id" binding:"required"`
+		// Code      string `json:"code"`
+		Captcha   string `json:"captcha"`
+		CaptchaId string `json:"captcha_id"`
 	}
 
 	respCaptha {
-		Captcha   string `json:"captcha" binding:"required,min=4,max=4"`
-		CaptchaId string `json:"captcha_id" binding:"required"`
+		Captcha   string `json:"captcha"`
+		CaptchaId string `json:"captcha_id"`
 		Msg       string `json:"msg""`
 		Status    int16  `json:"status"`
 	}
 )
 
-// 这只是一个service  其他的service怎么办? 事实上只能有一个service
+// 这只是一个service  其他的service怎么办? 事实上只能有一个名字service
 // 执行命令 goctl api -o user.api   创建 blog.api 文件。
 // 执行命令 goctl api go -api user.api -dir . 生成 api 相关代码
 @server(
 	group: user
 )
 service user-api {
-	// 还没有写的路由
-	// **这三个功能都需要jwt鉴权**
-	// **获取所有用户列表**
-	// **获取用户详细信息**
-	// **删除用户**
-	// **更新用户**
-	//
-	//	@handler Detail
-	//	get /api/v1/user/detail
-	//
-	//	@handler Update
-	//	patch /api/v1/user/update
-	
-	//	@handler GetUserList
-	//	get /api/v1/user returns ([]userInfoResponse)
-	
 	@handler Login
 	post /api/v1/user/login (reqUserLogin) returns (respUserLogin)
 	
@@ -93,4 +77,77 @@ service user-api {
 	// 为了进度 先忽略 这部分功能
 	@handler Captcha
 	get /api/v1/user/captcha returns (respCaptha)
+}
+
+type (
+	reqUserId {
+		Id int32 `path:"id"`
+	}
+
+	reqUserUpdate {
+		Id       int    `json:"id"`
+		UserName string `json:"username"`
+		Password string `json:"password"`
+		Email    string `json:"email"`
+		Gender   string `json:"gender"`
+	}
+
+	respUserDelete {
+		LoginMeta
+	}
+)
+
+@server(
+	jwt: Auth
+	group: user
+)
+service user-api {
+	@handler Detail
+	get /api/v1/user/detail/:id (reqUserId) returns (respUserLogin)
+	
+	@doc(
+		summary: "更新用户信息"
+	)
+	@handler Update
+	patch /api/v1/user/update (reqUserUpdate) returns (respUserLogin)
+	
+	@handler Delete
+	delete /api/v1/user/delete/:id (reqUserId) returns (respUserDelete)
+}
+
+type (
+	reqUserUpdateAdmin {
+		Id       int    `json:"id"`
+		UserName string `json:"username"`
+		Password string `json:"password"`
+		Email    string `json:"email"`
+		Gender   string `json:"gender"`
+		Role     int32  `json:"role"`
+	}
+
+	reqUserList {
+		Pn    int `json:"pn,default=0"`
+		PSize int `json:"psize,default=10"`
+	}
+
+	respUserList {
+		UserList []string `json:"userlist"`
+		LoginMeta
+	}
+)
+
+@server(
+	jwt: Auth
+	middleware: Admin
+	group: user
+)
+service user-api {
+	@handler GetUserList
+	get /api/v1/user (reqUserList) returns (respUserList)
+	
+	@doc(
+		summary: "更新用户信息及权限"
+	)
+	@handler UpdateAdmin
+	put /api/v1/user (reqUserUpdateAdmin) returns (respUserLogin)
 }

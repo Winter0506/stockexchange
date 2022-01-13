@@ -2,7 +2,10 @@ package logic
 
 import (
 	"context"
+	"crypto/sha512"
 	"database/sql"
+	"fmt"
+	"github.com/anaskhan96/go-password-encoder"
 	"stockexchange/rpc/user/internal/svc"
 	"stockexchange/rpc/user/model"
 	"stockexchange/rpc/user/user"
@@ -56,10 +59,15 @@ func (l *UpdateUserLogic) UpdateUser(in *user.UpdateUserInfo) (*user.Empty, erro
 		} else {
 			role = int(in.Role)
 		}
+		// 更新的时候也要加密密码
+		options := &password.Options{SaltLen: 8, Iterations: 10, KeyLen: 16, HashFunction: sha512.New}
+		salt, encodedPwd := password.Encode(in.PassWord, options)
+		// pbkdf2 是密钥算法
+		passWord := fmt.Sprintf("$pbkdf2-sha512$%s$%s", salt, encodedPwd)
 		err := l.svcCtx.Model.Update(&model.User{
 			Id:        in.Id,
 			Username:  in.UserName,
-			Password:  in.PassWord,
+			Password:  passWord,
 			Email:     in.Email,
 			Gender:    in.Gender,
 			Role:      role,

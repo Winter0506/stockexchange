@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.29_增加鉴权与管理员校验中间件">
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.30_增加更新用户删除用户">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/registerlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/registerlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/middleware/adminmiddleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/middleware/adminmiddleware.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/types/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/types/users.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/getuserlistlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/getuserlistlogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/updateadminlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/updateadminlogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/updatelogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/updatelogic.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/stock.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/stock.api" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/stockexchange.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/stockexchange.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/user.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/user.api" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/demo/proto/user/user.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/proto/user/user.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/demo/simulate.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/simulate.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/model/usermodel.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/model/usermodel.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/user.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/user/user.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/user/user.pb.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/stockexchange.go" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/rpc/demo/proto" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -68,11 +64,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\demo\proto" />
       <recent name="D:\Go\GOPATH\src\stockexchange\rpc\stock\model" />
       <recent name="D:\Go\GOPATH\src\stockexchange\api\internal\handler\user" />
       <recent name="D:\Go\GOPATH\src\stockexchange\web\user\internal\logic" />
       <recent name="D:\Go\GOPATH\src\stockexchange\web\user\internal\handler" />
-      <recent name="D:\Go\GOPATH\src\stockexchange\web\user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Go\GOPATH\src\stockexchange\web\user" />
@@ -144,7 +140,8 @@
     <MESSAGE value="21.12.21_股票模块查询id" />
     <MESSAGE value="21.12.27_股票创建查询完成" />
     <MESSAGE value="21.12.29_增加鉴权与管理员校验中间件" />
-    <option name="LAST_COMMIT_MESSAGE" value="21.12.29_增加鉴权与管理员校验中间件" />
+    <MESSAGE value="21.12.30_增加更新用户删除用户" />
+    <option name="LAST_COMMIT_MESSAGE" value="21.12.30_增加更新用户删除用户" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

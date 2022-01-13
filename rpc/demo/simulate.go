@@ -79,12 +79,13 @@ func TestGetUserByEmail() {
 
 func TestUpdateUser() {
 	rsp, err := userClient.UpdateUser(context.Background(), &user.UpdateUserInfo{
-		Id:        3, // 必须传进去id
-		UserName:  "xiaowang1",
-		PassWord:  "$pbkdf2-sha512$cuoH74L1$8eb35bfe2aac5c0aa00534eaa2341c8e",
-		Email:     "simulate1@gmai3.com",
-		Gender:    "male",
-		IsDeleted: 0, // 我没传进去role 所以你不能更改
+		Id:        8,
+		UserName:  "王其超UP",
+		PassWord:  "123456",
+		Email:     "wangqichao0105@gmail.com",
+		Gender:    "female",
+		Role:      2,
+		IsDeleted: 0,
 	})
 	if err != nil {
 		panic(err)
@@ -115,12 +116,13 @@ func main() {
 	// TestUpdateUser()
 	// TestCheckPassWord()
 	TestGetUserList()
+	//TestUpdateUser()
 }
 
 // 验证分页
 func TestGetUserList() {
 	rsp, err := userClient.GetUserList(context.Background(), &user.PageInfo{
-		Pn:    1,
+		Pn:    4,
 		PSize: 2,
 	})
 	if err != nil {

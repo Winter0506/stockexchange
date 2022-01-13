@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.30_增加更新用户删除用户">
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/getuserlistlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/getuserlistlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/updateadminlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/updateadminlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/updatelogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/updatelogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/types/stocks.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/types/stocks.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/stock.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/stock.api" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/demo/proto/user/user.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/proto/user/user.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/demo/simulate.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/simulate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +138,8 @@
     <MESSAGE value="21.12.27_股票创建查询完成" />
     <MESSAGE value="21.12.29_增加鉴权与管理员校验中间件" />
     <MESSAGE value="21.12.30_增加更新用户删除用户" />
-    <option name="LAST_COMMIT_MESSAGE" value="21.12.30_增加更新用户删除用户" />
+    <MESSAGE value="22.01.13-main用户编写" />
+    <option name="LAST_COMMIT_MESSAGE" value="22.01.13-main用户编写" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -158,6 +156,11 @@
           <url>file://$PROJECT_DIR$/rpc/stock/internal/logic/createstocklogic.go</url>
           <line>35</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/api/stockexchange.go</url>
+          <line>36</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -33,13 +33,17 @@ func main() {
 				fmt.Println("Error: status code", resp.StatusCode)
 				return
 			}
-		 */
+		*/
 		utf8Reader := transform.NewReader(resp.Body, simplifiedchinese.GBK.NewDecoder())
 		sitemap, err := ioutil.ReadAll(utf8Reader)
 		if err != nil {
 			log.Fatal(err)
 			return
 		}
+		//fmt.Println(sitemap)
+		//if string(sitemap) == "sh6005190=\n" {
+		//	return
+		//}
 		// 股票代码 股票名字 今日开盘价 昨日收盘价 当前时刻价格 今日最高价 今日最低价
 		// 做成字符串切片传出
 		// 模拟打印

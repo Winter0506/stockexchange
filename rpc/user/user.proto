@@ -2,47 +2,75 @@ syntax = "proto3";
 
 package user;
 
-message reqUser {
-  string username = 1;
-  string password = 2;
+// import "google/protobuf/empty.proto";  无法使用,直接找的Empty代替
+// 把id全部改成int64
+
+service User{
+  rpc GetUserList(PageInfo) returns (UserListResponse); // 用户列表 查询一个用户与查询所有用户
+  rpc GetUserByEmail(EmailRequest) returns (UserInfoResponse); //通过email查询用户
+  rpc GetUserByName(NameRequest) returns (UserInfoResponse); //通过name查询用户
+  rpc GetUserById(IdRequest) returns (UserInfoResponse); //通过id查询用户
+  rpc CreateUser(CreateUserInfo) returns (UserInfoResponse); // 添加用户
+  rpc UpdateUser(UpdateUserInfo) returns (Empty); // 更新用户 删除用户也可以用更新用户逻辑来做
+  rpc CheckPassWord(PasswordCheckInfo) returns (CheckResponse);
 }
 
-message user {
+message Empty {}
+
+message PasswordCheckInfo {
+  string password = 1;
+  string encryptedPassword = 2;
+}
+
+message CheckResponse {
+  bool success = 1;
+}
+
+message PageInfo {
+  uint32 pn = 1;
+  uint32 pSize = 2;
+}
+
+message EmailRequest {
+  string email = 1;
+}
+
+message NameRequest {
+  string name = 1;
+}
+
+message IdRequest {
   int64 id = 1;
-  string username = 2;
-  string password = 3;
 }
 
-message commResp {
-  bool ok = 1;
-  string error = 2;
+message CreateUserInfo {
+  string userName = 1;
+  string passWord = 2;
+  string email = 3;
+  string gender = 4;
 }
 
-message loginReq {
-  string username = 1;
-  string password = 2;
-}
-
-message respLogin {
-  string token = 1;
-}
-
-message reqUserId {
+message UpdateUserInfo {
   int64 id = 1;
+  string userName = 2;
+  string passWord = 3;
+  string email = 4;
+  string gender = 5;
+  int32 role = 6;
+  int32 isDeleted = 7;
 }
 
-message reqGetAll {
+message UserInfoResponse {
+  int64 id = 1;
+  string userName = 2;
+  string passWord = 3;
+  string email = 4;
+  string gender = 5;
+  int32 role = 6;
+  int32 isDeleted = 7;
 }
 
-message respGetAll {
-  repeated user users = 1;
-}
-
-service users {
-  rpc login (reqUser) returns (respLogin);
-  rpc create (reqUser) returns (commResp);
-  rpc update (user) returns (commResp);
-  rpc delete (reqUserId) returns (commResp);
-  rpc get (reqUserId) returns (user);
-  rpc getAll (reqGetAll) returns (respGetAll);
+message UserListResponse {
+  int32 total = 1;
+  repeated UserInfoResponse data = 2;
 }

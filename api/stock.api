@@ -1,0 +1,97 @@
+type (
+	reqStockId {
+		Id int32 `path:"id"`
+	}
+
+	DetailMessage {
+		Id               int32   `json:"id"`
+		StockName        string  `json:"stockName"`
+		StockCode        string  `json:"stockCode"`
+		TodayOpenPrice   float32 `json:"todayOpenPrice"`
+		LastClosePrice   float32 `json:"lastClosePrice"`
+		PresentPrice     float32 `json:"presentPrice"`
+		HighPrice        float32 `json:"highPrice"`
+		LowPrice         float32 `json:"lowPrice"`
+		CurrentBuyPrice  float32 `json:"currentBuyPrice"`
+		CurrentSellPrice float32 `json:"currentSellPrice"`
+		TransCount       int32   `json:"transCount"`
+		TransAmount      float32 `json:"transAmount"`
+
+		BuyOneCount   int32   `json:"buyOneCount"`
+		BuyOnePrice   float32 `json:"buyOnePrice"`
+		BuyTwoCount   int32   `json:"buyTwoCount"`
+		BuyTwoPrice   float32 `json:"buyTwoPrice"`
+		BuyThreeCount int32   `json:"buyThreeCount"`
+		BuyThreePrice float32 `json:"buyThreePrice"`
+		BuyFourCount  int32   `json:"buyFourCount"`
+		BuyFourPrice  float32 `json:"buyFourPrice"`
+		BuyFiveCount  int32   `json:"buyFiveCount"`
+		BuyFivePrice  float32 `json:"buyFivePrice"`
+
+		SellOneCount   int32   `json:"sellOneCount"`
+		SellOnePrice   float32 `json:"sellOnePrice"`
+		SellTwoCount   int32   `json:"sellTwoCount"`
+		SellTwoPrice   float32 `json:"sellTwoPrice"`
+		SellThreeCount int32   `json:"sellThreeCount"`
+		SellThreePrice float32 `json:"sellThreePrice"`
+		SellFourCount  int32   `json:"sellFourCount"`
+		SellFourPrice  float32 `json:"sellFourPrice"`
+		SellFiveCount  int32   `json:"sellFiveCount"`
+		SellFivePrice  float32 `json:"sellFivePrice"`
+
+		CurrentTime string `json:"currentTime"`
+	}
+
+	DetailMeta {
+		Msg    string `json:"msg""`
+		Status int16  `json:"status"`
+	}
+
+	respStockDetail {
+		DetailMessage
+		DetailMeta
+	}
+
+	reqStockCreate {
+		StockName string `json:"stockName"`
+		StockCode string `json:"stockCode"`
+	}
+)
+
+@server (
+	jwt: Auth
+	group: stock
+)
+service stock-api {
+	@handler detail
+	get /api/v1/stock/:id (reqStockId) returns (respStockDetail)
+	// 股票相关
+	// 获取详情 需要 外包一层 代码获取
+	// 列表获取  这个需要看用户相关 先不实现
+	// 名字获取 代码获取 这两个都是在搜索中实现 而且用户相关的里面只携带股票id
+	// 修改 添加 需要验证用户权限
+}
+
+// goctl api go -api stock.api -dir .
+// 这个创建需要jwt 和 auth 验证 必须管理员才能创建
+@server (
+	// -H 'authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6I'
+	jwt: Auth
+	middleware: Admin
+	group: stock
+)
+service stock-api {
+	@handler create
+	post /api/v1/stock/create (reqStockCreate) returns (respStockDetail)
+}
+
+// 交易相关
+// 订单相关  用户金额相关表 用户id 本金 现金 总资产 金额 字段 累计盈亏 浮动盈亏
+
+// 持仓表  市值 数量 现价 成本 盈亏 盈亏率  收藏
+// 操作记录表  买入 卖出 价格点 日期 成交额
+
+// 库存相关 拓宽思路
+
+// 笔记相关 就是user_op
+// 通知相关

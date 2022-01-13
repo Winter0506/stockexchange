@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-
 	"stockexchange/rpc/user/internal/config"
 	"stockexchange/rpc/user/internal/server"
 	"stockexchange/rpc/user/internal/svc"
@@ -28,10 +27,10 @@ func main() {
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
 	ctx := svc.NewServiceContext(c)
-	srv := server.NewUsersServer(ctx)
+	srv := server.NewUserServer(ctx)
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {
-		user.RegisterUsersServer(grpcServer, srv)
+		user.RegisterUserServer(grpcServer, srv)
 
 		if c.Mode == service.DevMode || c.Mode == service.TestMode {
 			reflection.Register(grpcServer)

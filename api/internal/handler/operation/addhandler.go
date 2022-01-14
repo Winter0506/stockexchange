@@ -1,0 +1,28 @@
+package operation
+
+import (
+	"net/http"
+
+	"github.com/tal-tech/go-zero/rest/httpx"
+	"stockexchange/api/internal/logic/operation"
+	"stockexchange/api/internal/svc"
+	"stockexchange/api/internal/types"
+)
+
+func AddHandler(ctx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req types.ReqUserFav
+		if err := httpx.Parse(r, &req); err != nil {
+			httpx.Error(w, err)
+			return
+		}
+
+		l := operation.NewAddLogic(r.Context(), ctx)
+		resp, err := l.Add(req)
+		if err != nil {
+			httpx.Error(w, err)
+		} else {
+			httpx.OkJson(w, resp)
+		}
+	}
+}

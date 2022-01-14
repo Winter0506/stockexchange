@@ -1,0 +1,62 @@
+type (
+	DetailMeta {
+		Msg    string `json:"msg""`
+		Status int16  `json:"status"`
+	}
+
+	reqUserFav {
+		UserId  string `json:"userid"`
+		StockId string `json:"stockid"`
+	}
+
+	reqStockFav {
+		UserId  string `json:"userid"`
+		StockId string `json:"stockid"`
+	}
+
+	respFavDetail {
+		DetailMeta
+	}
+
+	FavMessage {
+		Total   int      `json:"total""`
+		FavList []string `json:"favlist"`
+	}
+
+	respFavList {
+		FavMessage
+		DetailMeta
+	}
+)
+
+@server (
+	jwt: Auth
+	group: operation
+)
+// 请求方法有错 再改
+service operation-api {
+	@handler FavDetail
+	get /api/v1/operation/detail (reqUserFav) returns (respFavDetail)
+	
+	@handler Add
+	get /api/v1/operation/add (reqUserFav) returns (respFavDetail)
+	
+	@handler Delete
+	get /api/v1/operation/delete (reqUserFav) returns (respFavDetail)
+	
+	@handler UserFav
+	post /api/v1/operation/userfav (reqUserFav) returns (respFavList)
+	
+}
+
+// goctl api go -api operation.api -dir .
+@server (
+	// -H 'authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6I'
+	jwt: Auth
+	middleware: Admin
+	group: operation
+)
+service operation-api {
+	@handler StockFav
+	post /api/v1/operation/stockfav (reqStockFav) returns (respFavList)
+}

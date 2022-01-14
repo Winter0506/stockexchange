@@ -2,6 +2,7 @@ package handler
 
 import (
 	"net/http"
+	"stockexchange/api/internal/handler/operation"
 	"stockexchange/api/internal/handler/user"
 
 	stock "stockexchange/api/internal/handler/stock"
@@ -103,6 +104,46 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 					Method:  http.MethodPut,
 					Path:    "/api/v1/user",
 					Handler: user.UpdateAdminHandler(serverCtx),
+				},
+			}...,
+		),
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodGet,
+				Path:    "/api/v1/operation/detail",
+				Handler: operation.FavDetailHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/api/v1/operation/add",
+				Handler: operation.AddHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/api/v1/operation/delete",
+				Handler: operation.DeleteHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/v1/operation/userfav",
+				Handler: operation.UserFavHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.Admin},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/api/v1/operation/stockfav",
+					Handler: operation.StockFavHandler(serverCtx),
 				},
 			}...,
 		),

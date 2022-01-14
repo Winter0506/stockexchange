@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package operation;
+
+// goctl rpc proto -src operation.proto -dir .
+service operation{
+  rpc GetFavList(UserFavRequest) returns(UserFavListResponse); // 查看用户收藏列表
+  rpc AddUserFav(UserFavRequest) returns(Empty); // 用户添加收藏
+  rpc DeleteUserFav(UserFavRequest) returns(Empty); // 用户删除收藏
+  rpc GetUserFavDetail(UserFavRequest) returns(Empty); // 查询用户是否已经收藏某只股票
+}
+
+message Empty {}
+
+message UserFavRequest{
+  int32 userId = 1;
+  int32 stockId = 2;
+}
+message UserFavResponse{
+  int32 userId = 1;
+  int32 stockId = 2;
+}
+
+message UserFavListResponse {
+  int32 total = 1;
+  repeated UserFavResponse data = 2;
+}

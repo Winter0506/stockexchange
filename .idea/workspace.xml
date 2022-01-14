@@ -2,11 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.30_增加更新用户删除用户">
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/internal/types/opertions.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/operation.api" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/etc/operation.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/internal/config/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/internal/logic/adduserfavlogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/internal/logic/deleteuserfavlogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/internal/logic/getfavlistlogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/internal/logic/getuserfavdetaillogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/internal/server/operationserver.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/internal/svc/servicecontext.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/model/base.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/model/option.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/operation.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/operation.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/operation/operation.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/operationclient/operation.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/types/stocks.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/types/stocks.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/stock.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/stock.api" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +30,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Proto File" />
         <option value="Api File" />
         <option value="Go File" />
       </list>
@@ -46,6 +61,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultApiTemplateProperty" value="Api File" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="DefaultProtoTemplateProperty" value="Proto File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -139,7 +155,8 @@
     <MESSAGE value="21.12.29_增加鉴权与管理员校验中间件" />
     <MESSAGE value="21.12.30_增加更新用户删除用户" />
     <MESSAGE value="22.01.13-main用户编写" />
-    <option name="LAST_COMMIT_MESSAGE" value="22.01.13-main用户编写" />
+    <MESSAGE value="22.01.13_股票列表以及名称代码查询" />
+    <option name="LAST_COMMIT_MESSAGE" value="22.01.13_股票列表以及名称代码查询" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -156,11 +173,6 @@
           <url>file://$PROJECT_DIR$/rpc/stock/internal/logic/createstocklogic.go</url>
           <line>35</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/api/stockexchange.go</url>
-          <line>36</line>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

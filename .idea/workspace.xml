@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.30_增加更新用户删除用户">
-      <change afterPath="$PROJECT_DIR$/rpc/operation/internal/svc/servicecontext.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/etc/stockexchange.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/etc/stockexchange.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/stock/createlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/stock/createlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/svc/servicecontext.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/svc/servicecontext.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/types/stocks.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/types/stocks.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/stock.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/stock.api" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/demo/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/model/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/demo/simulate.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/simulate.go" afterDir="false" />
-    </list>
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.01.15_用户操作部分完成" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +25,7 @@
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
@@ -151,7 +139,8 @@
     <MESSAGE value="22.01.13_股票列表以及名称代码查询" />
     <MESSAGE value="22.01.14_添加用户操作与gorm" />
     <MESSAGE value="22.01.15_添加用户操作所有实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="22.01.15_添加用户操作所有实现" />
+    <MESSAGE value="22.01.15_用户操作部分完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="22.01.15_用户操作部分完成" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

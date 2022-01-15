@@ -5,10 +5,9 @@ import (
 	"fmt"
 	"stockexchange/rpc/operation/model"
 
+	"github.com/tal-tech/go-zero/core/logx"
 	"stockexchange/rpc/operation/internal/svc"
 	"stockexchange/rpc/operation/operation"
-
-	"github.com/tal-tech/go-zero/core/logx"
 )
 
 type AddUserFavLogic struct {

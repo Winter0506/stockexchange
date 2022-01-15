@@ -5,9 +5,9 @@ package server
 
 import (
 	"context"
+	"stockexchange/rpc/operation/internal/svc"
 
 	"stockexchange/rpc/operation/internal/logic"
-	"stockexchange/rpc/operation/internal/svc"
 	"stockexchange/rpc/operation/operation"
 )
 

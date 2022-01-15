@@ -41,7 +41,7 @@ type DetailMessage struct {
 }
 
 type DetailMeta struct {
-	Msg    string `json:"msg""`
+	Msg    string `json:"msg"`
 	Status int16  `json:"status"`
 }
 
@@ -67,7 +67,7 @@ type StockMessage struct {
 }
 
 type ListMeta struct {
-	Msg    string `json:"msg""`
+	Msg    string `json:"msg"`
 	Status int16  `json:"status"`
 }
 

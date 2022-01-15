@@ -2,38 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.30_增加更新用户删除用户">
-      <change afterPath="$PROJECT_DIR$/api/internal/utils/rpcError.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/demo/model/base.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/operation/model/operation.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/operation/internal/svc/servicecontext.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/etc/stockexchange.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/etc/stockexchange.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/config/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/handler/operation/stockfavhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/operation/stockfavhandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/handler/operation/userfavhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/operation/userfavhandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/operation/addlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/operation/addlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/operation/deletelogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/operation/deletelogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/operation/favdetaillogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/operation/favdetaillogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/operation/stockfavlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/operation/stockfavlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/operation/userfavlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/operation/userfavlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/stock/addlogic.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/internal/logic/stock/createlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/stock/createlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/stock/deletelogic.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/stock/favdetaillogic.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/stock/stockfavlogic.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/stock/userfavlogic.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/internal/svc/servicecontext.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/svc/servicecontext.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/types/opertions.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/types/opertions.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/types/types.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/operation.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/operation.api" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/internal/types/stocks.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/types/stocks.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/stock.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/stock.api" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/demo/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/model/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/demo/simulate.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/simulate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/operation/internal/logic/adduserfavlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/operation/internal/logic/adduserfavlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/operation/internal/logic/deleteuserfavlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/operation/internal/logic/deleteuserfavlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/operation/internal/logic/getfavlistlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/operation/internal/logic/getfavlistlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/operation/internal/logic/getuserfavdetaillogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/operation/internal/logic/getuserfavdetaillogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/operation/model/option.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/model/operation.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.01.15_用户操作部分完成" />
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.01.15_用户操作部分完成+workspace.xml">
+      <change beforePath="$PROJECT_DIR$/api/internal/types/types.go" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,7 +142,9 @@
     <MESSAGE value="22.01.14_添加用户操作与gorm" />
     <MESSAGE value="22.01.15_添加用户操作所有实现" />
     <MESSAGE value="22.01.15_用户操作部分完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="22.01.15_用户操作部分完成" />
+    <MESSAGE value="22.01.15_用户操作部分完成+workspace.xml" />
+    <MESSAGE value="22.01.15_用户操作部分完成+types.go" />
+    <option name="LAST_COMMIT_MESSAGE" value="22.01.15_用户操作部分完成+types.go" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

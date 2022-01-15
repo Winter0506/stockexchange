@@ -2,7 +2,6 @@ package logic
 
 import (
 	"context"
-	"fmt"
 	"stockexchange/rpc/operation/model"
 
 	"github.com/tal-tech/go-zero/core/logx"
@@ -31,9 +30,7 @@ func (l *AddUserFavLogic) AddUserFav(in *operation.UserFavRequest) (*operation.E
 	userFav.Stock = in.StockId
 
 	// 这里只是用一下gorm 为了方便不将缓存放入redis
-	fmt.Println(userFav)
 	l.svcCtx.DbEngine.Save(&userFav)
-	fmt.Println("haha")
 
 	return &operation.Empty{}, nil
 }

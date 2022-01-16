@@ -1,0 +1,136 @@
+syntax = "proto3";
+
+package order;
+
+// import "google/protobuf/empty.proto";  无法使用,直接找的Empty代替
+// 把id全部改成int64
+
+// 账户相关
+service Order{
+  rpc GetUserAccount(IdRequest) returns (UserAccountResponse); // 查询用户账户
+  rpc CreateUserAccount(CreateUserAccountInfo) returns (UserAccountResponse); // 创建用户账户
+  rpc UpdateUserAccount(UpdateUserAccountInfo) returns (UserAccountResponse); // 更新用户账户
+  rpc GetUserAccountList(PageInfo) returns (UserAccountListResponse); // 获取用户账户列表
+  rpc DeleteUserAccount(DeleteUserAccountInfo) returns (DeleteUserAccountResponse); // 删除用户帐号
+}
+
+message Empty {}
+
+message IdRequest {
+  int64 id = 1;
+}
+
+message UserAccountResponse {
+  int64 userId = 1;
+  float account = 2; // 账户总金额
+  float marketValue = 3; // 持股市值
+  float available = 4; // 可用金钱
+  float profitAndLoss = 5; // 盈亏
+}
+
+message CreateUserAccountInfo {
+  int64 userId = 1;
+  float account = 2; // 账户总金额
+  float marketValue = 3; // 持股市值
+  float available = 4; // 可用金钱
+  float profitAndLoss = 5; // 盈亏
+}
+
+message UpdateUserAccountInfo {
+  int64 userId = 1;
+  float account = 2; // 账户总金额
+}
+
+message DeleteUserAccountInfo {
+  int64 userId = 1;
+}
+
+
+message DeleteUserAccountResponse {
+  bool success = 1;
+}
+
+message PageInfo {
+  uint32 pn = 1;
+  uint32 pSize = 2;
+}
+
+
+message UserAccountListResponse {
+  int32 total = 1;
+  repeated UserAccountResponse data = 2;
+}
+
+// 持仓相关
+service order {
+  // 用户 和 股票 多对多的 关系
+  rpc GetHoldPosition(HoldPositionRequest) returns (HoldPositionResponse); // 查询用户持仓的这个股票的内容
+  rpc GetPositionList(UserHoldPositionRequest) returns (HoldPositionListResponse); // 获取用户持仓列表
+  // 实际上用户是不能直接操作下面这三个方法的 这里写出来只是当作思路
+  rpc CreateHoldPosition(CreateHoldPositionRequest) returns (HoldPositionResponse); // 创建用户持仓的这个股票内容
+  rpc UpdateHoldPosition(UpdateHoldPositionRequest) returns (HoldPositionResponse); // 更新用户持仓的这个股票内容
+  // 卖出的时候 正好一点不留 就用delete
+  rpc DeleteHoldPosition(DeleteHoldPositionRequest) returns (DeleteHoldPositionResponse); // 删除用户持仓的这个股票
+}
+
+message HoldPositionRequest {
+  int64 id = 1;
+}
+
+message HoldPositionResponse {
+  int64 id = 1;
+  int64 user = 2;
+  int64 stock = 3;
+  string stockName = 4;
+  int32 number = 5;
+  float cost = 6;
+}
+
+message CreateHoldPositionRequest {
+  int64 user = 1;
+  int64 stock = 2;
+  string stockName = 3;
+  int32 number = 4;
+  float cost = 5;
+}
+
+message UpdateHoldPositionRequest {
+  int64 user = 1;
+  int64 stock = 2;
+  string stockName = 3;
+  int32 number = 4;
+  float cost = 5;
+}
+
+message DeleteHoldPositionRequest {
+  int64 user = 1;
+  int64 stock = 2;
+  string stockName = 3;
+  int32 number = 4;
+  float cost = 5;
+}
+
+message DeleteHoldPositionResponse {
+  bool success = 1;
+}
+
+message UserHoldPositionRequest {
+  int64 user = 1;
+}
+
+message HoldPositionListResponse {
+  int32 total = 1;
+  repeated HoldPositionListResponse data = 2;
+}
+
+// 委托相关
+service order {
+  // 用户 和 股票 多对多的 关系
+  rpc GetHoldPosition(HoldPositionRequest) returns (HoldPositionResponse); // 查询用户持仓的这个股票的内容
+  rpc GetPositionList(UserHoldPositionRequest) returns (HoldPositionListResponse); // 获取用户持仓列表
+  // 实际上用户是不能直接操作下面这三个方法的 这里写出来只是当作思路
+  rpc CreateHoldPosition(CreateHoldPositionRequest) returns (HoldPositionResponse); // 创建用户持仓的这个股票内容
+  rpc UpdateHoldPosition(UpdateHoldPositionRequest) returns (HoldPositionResponse); // 更新用户持仓的这个股票内容
+  // 卖出的时候 正好一点不留 就用delete
+  rpc DeleteHoldPosition(DeleteHoldPositionRequest) returns (DeleteHoldPositionResponse); // 删除用户持仓的这个股票
+}

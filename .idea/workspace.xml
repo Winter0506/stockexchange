@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.01.15_用户操作部分完成+workspace.xml">
-      <change beforePath="$PROJECT_DIR$/api/internal/types/types.go" beforeDir="false" />
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.01.15_用户操作部分完成+rpc/operation/add">
+      <change afterPath="$PROJECT_DIR$/rpc/model/order.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/model/ordermodel.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/model/trustmodel.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/model/holdposition.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/model/holdpositionmodel.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/holdpositionmodel.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/model/useraccount.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/model/useraccountmodel.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/useraccountmodel.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/operation/model/option.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/order/order.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/order/order.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,9 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Proto File" />
         <option value="Api File" />
         <option value="Go File" />
+        <option value="Proto File" />
       </list>
     </option>
   </component>
@@ -49,7 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/rpc/demo/model" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/rpc/model" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -60,11 +69,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\model" />
       <recent name="D:\Go\GOPATH\src\stockexchange\rpc\demo\model" />
       <recent name="D:\Go\GOPATH\src\stockexchange\rpc\demo\proto" />
       <recent name="D:\Go\GOPATH\src\stockexchange\rpc\stock\model" />
       <recent name="D:\Go\GOPATH\src\stockexchange\api\internal\handler\user" />
-      <recent name="D:\Go\GOPATH\src\stockexchange\web\user\internal\logic" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Go\GOPATH\src\stockexchange\web\user" />
@@ -116,7 +125,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -144,7 +165,9 @@
     <MESSAGE value="22.01.15_用户操作部分完成" />
     <MESSAGE value="22.01.15_用户操作部分完成+workspace.xml" />
     <MESSAGE value="22.01.15_用户操作部分完成+types.go" />
-    <option name="LAST_COMMIT_MESSAGE" value="22.01.15_用户操作部分完成+types.go" />
+    <MESSAGE value="22.01.15_用户操作部分完成+rpc/operation/add" />
+    <MESSAGE value="22—01-16_订单服务建表" />
+    <option name="LAST_COMMIT_MESSAGE" value="22—01-16_订单服务建表" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

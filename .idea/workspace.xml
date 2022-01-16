@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.01.15_用户操作部分完成+workspace.xml">
-      <change beforePath="$PROJECT_DIR$/api/internal/types/types.go" beforeDir="false" />
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.01.15_用户操作部分完成+rpc/operation/add">
+      <change afterPath="$PROJECT_DIR$/rpc/model/holdposition.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/model/holdpositionmodel.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/model/useraccount.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/model/useraccountmodel.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc/order/order.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,9 +18,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Proto File" />
         <option value="Api File" />
         <option value="Go File" />
+        <option value="Proto File" />
       </list>
     </option>
   </component>
@@ -116,7 +122,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -144,7 +162,8 @@
     <MESSAGE value="22.01.15_用户操作部分完成" />
     <MESSAGE value="22.01.15_用户操作部分完成+workspace.xml" />
     <MESSAGE value="22.01.15_用户操作部分完成+types.go" />
-    <option name="LAST_COMMIT_MESSAGE" value="22.01.15_用户操作部分完成+types.go" />
+    <MESSAGE value="22.01.15_用户操作部分完成+rpc/operation/add" />
+    <option name="LAST_COMMIT_MESSAGE" value="22.01.15_用户操作部分完成+rpc/operation/add" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

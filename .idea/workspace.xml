@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.01.15_用户操作部分完成+rpc/operation/add">
-      <change afterPath="$PROJECT_DIR$/rpc/model/order.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/model/ordermodel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/model/trustmodel.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/model/holdposition.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/model/holdpositionmodel.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/holdpositionmodel.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/model/order.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/model/ordermodel.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/ordermodel.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/model/trustmodel.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/trustmodel.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/model/useraccount.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc/model/useraccountmodel.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/model/useraccountmodel.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/operation/model/option.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/order/order.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/order/order.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +34,6 @@
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
@@ -131,7 +128,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="origin/develop" />
                       </list>
                     </value>
                   </entry>
@@ -166,6 +163,7 @@
     <MESSAGE value="22.01.15_用户操作部分完成+workspace.xml" />
     <MESSAGE value="22.01.15_用户操作部分完成+types.go" />
     <MESSAGE value="22.01.15_用户操作部分完成+rpc/operation/add" />
+    <MESSAGE value="22.01.17_更改proto文件" />
     <MESSAGE value="22—01-16_订单服务建表" />
     <option name="LAST_COMMIT_MESSAGE" value="22—01-16_订单服务建表" />
   </component>

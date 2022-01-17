@@ -394,6 +394,7 @@ github.com/syhlion/requestwork.v2 v0.0.0-20210119021838-2bc6ad110469 h1:5KJZhQ/N
 github.com/syhlion/requestwork.v2 v0.0.0-20210119021838-2bc6ad110469/go.mod h1:q6aCogTDBcW9MLecaxRwrQIVF1okJ/rhG64soNrk8KE=
 github.com/tal-tech/go-zero v1.2.4 h1:S0Cj69rHfIbZBVgQHnblR2dGkhz5Ij3bm1lM19kkig4=
 github.com/tal-tech/go-zero v1.2.4/go.mod h1:EHOQsRClBD4svg5mJl8iqkQn5bTMZx+AeHwkQpSjJXg=
+github.com/tal-tech/go-zero v1.2.5 h1:DpqTM/OTCThRtJoQPlp6b4/YnbCVkZ3gDT7+nFGUo3k=
 github.com/urfave/cli v1.22.5/go.mod h1:Gos4lmkARVdJ6EkW0WaNv/tZAAMe9V7XWyB60NtXRu0=
 github.com/urfave/cli/v2 v2.3.0/go.mod h1:LJmUH05zAU44vOAcrfzZQKsZbVcdbOG8rtL3/XcUArI=
 github.com/xdg-go/pbkdf2 v1.0.0/go.mod h1:jrpuAogTd400dnrH08LKmI/xc1MbPOebTwRqcT5RDeI=

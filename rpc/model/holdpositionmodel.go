@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/stores/builderx"
+	"github.com/tal-tech/go-zero/core/stores/builder"
 	"github.com/tal-tech/go-zero/core/stores/cache"
 	"github.com/tal-tech/go-zero/core/stores/sqlc"
 	"github.com/tal-tech/go-zero/core/stores/sqlx"
@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	holdpositionFieldNames          = builderx.RawFieldNames(&Holdposition{})
+	holdpositionFieldNames          = builder.RawFieldNames(&Holdposition{})
 	holdpositionRows                = strings.Join(holdpositionFieldNames, ",")
 	holdpositionRowsExpectAutoSet   = strings.Join(stringx.Remove(holdpositionFieldNames, "`id`", "`create_time`", "`update_time`"), ",")
 	holdpositionRowsWithPlaceHolder = strings.Join(stringx.Remove(holdpositionFieldNames, "`id`", "`create_time`", "`update_time`"), "=?,") + "=?"

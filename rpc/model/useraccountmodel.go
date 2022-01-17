@@ -3,10 +3,10 @@ package model
 import (
 	"database/sql"
 	"fmt"
+	"github.com/tal-tech/go-zero/core/stores/builder"
 	"strings"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/stores/builderx"
 	"github.com/tal-tech/go-zero/core/stores/cache"
 	"github.com/tal-tech/go-zero/core/stores/sqlc"
 	"github.com/tal-tech/go-zero/core/stores/sqlx"
@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	useraccountFieldNames          = builderx.RawFieldNames(&Useraccount{})
+	useraccountFieldNames          = builder.RawFieldNames(&Useraccount{})
 	useraccountRows                = strings.Join(useraccountFieldNames, ",")
 	useraccountRowsExpectAutoSet   = strings.Join(stringx.Remove(useraccountFieldNames, "`userid`", "`create_time`", "`update_time`"), ",")
 	useraccountRowsWithPlaceHolder = strings.Join(stringx.Remove(useraccountFieldNames, "`userid`", "`create_time`", "`update_time`"), "=?,") + "=?"

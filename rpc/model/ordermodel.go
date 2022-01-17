@@ -3,10 +3,10 @@ package model
 import (
 	"database/sql"
 	"fmt"
+	"github.com/tal-tech/go-zero/core/stores/builder"
 	"strings"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/stores/builderx"
 	"github.com/tal-tech/go-zero/core/stores/cache"
 	"github.com/tal-tech/go-zero/core/stores/sqlc"
 	"github.com/tal-tech/go-zero/core/stores/sqlx"
@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	orderFieldNames          = builderx.RawFieldNames(&Order{})
+	orderFieldNames          = builder.RawFieldNames(&Order{})
 	orderRows                = strings.Join(orderFieldNames, ",")
 	orderRowsExpectAutoSet   = strings.Join(stringx.Remove(orderFieldNames, "`id`", "`create_time`", "`update_time`"), ",")
 	orderRowsWithPlaceHolder = strings.Join(stringx.Remove(orderFieldNames, "`id`", "`create_time`", "`update_time`"), "=?,") + "=?"

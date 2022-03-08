@@ -3,7 +3,7 @@ package user
 import (
 	"net/http"
 
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 	"stockexchange/api/internal/logic/user"
 	"stockexchange/api/internal/svc"
 )

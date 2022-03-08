@@ -12,6 +12,8 @@ type Config struct {
 	User       zrpc.RpcClientConf
 	Stock      zrpc.RpcClientConf
 	Operation  zrpc.RpcClientConf
+	Order      zrpc.RpcClientConf
+	Inventory  zrpc.RpcClientConf
 	CacheRedis cache.CacheConf
 	Auth       struct {
 		AccessSecret string

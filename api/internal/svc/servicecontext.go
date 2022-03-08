@@ -5,7 +5,9 @@ import (
 	"github.com/tal-tech/go-zero/zrpc"
 	"stockexchange/api/internal/config"
 	"stockexchange/api/internal/middleware"
+	"stockexchange/rpc/inventory/inventoryclient"
 	"stockexchange/rpc/operation/operationclient"
+	"stockexchange/rpc/order/orderclient"
 	"stockexchange/rpc/stock/stockclient"
 	"stockexchange/rpc/user/userclient"
 )
@@ -16,6 +18,8 @@ type ServiceContext struct {
 	User      userclient.User
 	Stock     stockclient.Stock
 	Operation operationclient.Operation
+	Order     orderclient.Order
+	Inventory inventoryclient.Inventory
 	Admin     rest.Middleware
 }
 
@@ -26,6 +30,8 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		User:      userclient.NewUser(zrpc.MustNewClient(c.User)),
 		Stock:     stockclient.NewStock(zrpc.MustNewClient(c.Stock)),
 		Operation: operationclient.NewOperation(zrpc.MustNewClient(c.Operation)),
+		Order:     orderclient.NewOrder(zrpc.MustNewClient(c.Order)),
+		Inventory: inventoryclient.NewInventory(zrpc.MustNewClient(c.Inventory)),
 		Admin:     middleware.NewAdminMiddleware().Handle,
 	}
 }

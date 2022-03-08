@@ -57,7 +57,7 @@ func (l *UpdateUserLogic) UpdateUser(in *user.UpdateUserInfo) (*user.Empty, erro
 		if in.Role == 0 {
 			role = rsp.Role
 		} else {
-			role = int(in.Role)
+			role = 2
 		}
 		// 更新的时候也要加密密码
 		options := &password.Options{SaltLen: 8, Iterations: 10, KeyLen: 16, HashFunction: sha512.New}

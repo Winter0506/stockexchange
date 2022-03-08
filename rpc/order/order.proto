@@ -5,13 +5,43 @@ package order;
 // import "google/protobuf/empty.proto";  无法使用,直接找的Empty代替
 // 把id全部改成int64
 
-// 账户相关
+// goctl rpc proto -src order.proto -dir .
 service Order{
+  // 账户相关
   rpc GetUserAccount(IdRequest) returns (UserAccountResponse); // 查询用户账户
   rpc CreateUserAccount(CreateUserAccountInfo) returns (UserAccountResponse); // 创建用户账户
   rpc UpdateUserAccount(UpdateUserAccountInfo) returns (UserAccountResponse); // 更新用户账户
   rpc GetUserAccountList(PageInfo) returns (UserAccountListResponse); // 获取用户账户列表
   rpc DeleteUserAccount(DeleteUserAccountInfo) returns (DeleteUserAccountResponse); // 删除用户帐号
+
+  // 持仓相关
+  // 用户 和 股票 多对多的 关系
+  rpc GetHoldPosition(HoldPositionRequest) returns (HoldPositionResponse); // 查询用户持仓的这个股票的内容
+  rpc GetHoldPositionList(UserHoldPositionRequest) returns (HoldPositionListResponse); // 获取用户持仓列表
+  // 实际上用户是不能直接操作下面这三个方法的 这里写出来只是当作思路
+  // 所以在rpc中并没有写出这三个的逻辑
+  // 在创建委托 并且成交时 利用model 进行更新 下面三个 不能主动去创建持仓
+  rpc CreateHoldPosition(CreateHoldPositionRequest) returns (HoldPositionResponse); // 创建用户持仓的这个股票内容
+  rpc UpdateHoldPosition(UpdateHoldPositionRequest) returns (HoldPositionResponse); // 更新用户持仓的这个股票内容
+  // 卖出的时候 正好一点不留 就用delete
+  rpc DeleteHoldPosition(DeleteHoldPositionRequest) returns (DeleteHoldPositionResponse); // 删除用户持仓的这个股票
+
+  // 委托相关
+  rpc CreateTrustItem(TrustItemRequest) returns (TrustInfoResponse); // 创建委托条目
+  rpc TrustItemList(UserTrustInfoRequest) returns (TrustListResponse); // 查询委托列表
+  rpc TrustItemDetail(TrustInfoRequest) returns (TrustInfoResponse); // 查询委托详情
+  // 只能跟新model里的订单状态 其他的一律不能更新
+  rpc UpdateTrustItem(UpdateTrustRequest) returns (TrustInfoResponse); // 更新委托条目
+  // 撤单只能撤还没成交的部分
+  rpc DeleteTrustItem(DeleteTrustRequest) returns (DeleteTrustResponse); // 撤单 委托条目
+
+  // 订单相关
+  rpc CreateOrderItem(OrderItemRequest) returns (OrderInfoResponse); // 创建订单
+  rpc OrderItemList(UserOrderInfoRequest) returns (OrderListResponse); // 查询订单列表
+  rpc OrderItemDetail(OrderInfoRequest) returns (OrderInfoResponse); // 查询订单详情
+  rpc UpdateOrderItem(UpdateOrderRequest) returns (OrderInfoResponse); // 更新订单条目
+  rpc DeleteOrderItem(DeleteOrderRequest) returns (DeleteOrderResponse); // 删除订单
+
 }
 
 message Empty {}
@@ -62,17 +92,6 @@ message UserAccountListResponse {
 }
 
 // 持仓相关
-service order {
-  // 用户 和 股票 多对多的 关系
-  rpc GetHoldPosition(HoldPositionRequest) returns (HoldPositionResponse); // 查询用户持仓的这个股票的内容
-  rpc GetPositionList(UserHoldPositionRequest) returns (HoldPositionListResponse); // 获取用户持仓列表
-  // 实际上用户是不能直接操作下面这三个方法的 这里写出来只是当作思路
-  rpc CreateHoldPosition(CreateHoldPositionRequest) returns (HoldPositionResponse); // 创建用户持仓的这个股票内容
-  rpc UpdateHoldPosition(UpdateHoldPositionRequest) returns (HoldPositionResponse); // 更新用户持仓的这个股票内容
-  // 卖出的时候 正好一点不留 就用delete
-  rpc DeleteHoldPosition(DeleteHoldPositionRequest) returns (DeleteHoldPositionResponse); // 删除用户持仓的这个股票
-}
-
 message HoldPositionRequest {
   int64 id = 1;
 }
@@ -105,9 +124,6 @@ message UpdateHoldPositionRequest {
 message DeleteHoldPositionRequest {
   int64 user = 1;
   int64 stock = 2;
-  string stockName = 3;
-  int32 number = 4;
-  float cost = 5;
 }
 
 message DeleteHoldPositionResponse {
@@ -120,17 +136,137 @@ message UserHoldPositionRequest {
 
 message HoldPositionListResponse {
   int32 total = 1;
-  repeated HoldPositionListResponse data = 2;
+  repeated HoldPositionResponse data = 2;
 }
 
 // 委托相关
-service order {
-  // 用户 和 股票 多对多的 关系
-  rpc GetHoldPosition(HoldPositionRequest) returns (HoldPositionResponse); // 查询用户持仓的这个股票的内容
-  rpc GetPositionList(UserHoldPositionRequest) returns (HoldPositionListResponse); // 获取用户持仓列表
-  // 实际上用户是不能直接操作下面这三个方法的 这里写出来只是当作思路
-  rpc CreateHoldPosition(CreateHoldPositionRequest) returns (HoldPositionResponse); // 创建用户持仓的这个股票内容
-  rpc UpdateHoldPosition(UpdateHoldPositionRequest) returns (HoldPositionResponse); // 更新用户持仓的这个股票内容
-  // 卖出的时候 正好一点不留 就用delete
-  rpc DeleteHoldPosition(DeleteHoldPositionRequest) returns (DeleteHoldPositionResponse); // 删除用户持仓的这个股票
+message TrustItemRequest {
+  int64 user = 1;
+  int64 stock = 2;
+  int32 number = 4;
+  float cost = 5;
+  uint32 direction = 6;
 }
+
+message TrustInfoResponse {
+  int64 id = 1;
+  int64 user = 2;
+  int64 stock = 3;
+  int32 number = 4;
+  float cost = 5;
+  uint32  direction = 6;
+  int32 dealNumber = 7;
+  float dealCost = 8;
+  string status = 9;
+  string trustSn = 10;
+}
+
+message UserTrustInfoRequest {
+  int64 user = 1;
+  int32 page = 2;
+  int32 pageSize = 3;
+}
+
+message TrustListResponse {
+  int32 total = 1;
+  repeated TrustInfoResponse data = 2;
+}
+
+message TrustInfoRequest {
+  int64 id = 1;
+  string trustSn = 2;
+}
+
+message UpdateTrustRequest {
+  int32 id = 1;
+  string status = 2;
+  string trustSn = 3;
+}
+
+message DeleteTrustRequest {
+  // 保证委托删除正确
+  int64 id = 1;
+  int64 user = 2;
+  int64 stock = 3;
+  string trustSn = 4;
+}
+
+message DeleteTrustResponse {
+  bool success = 1;
+}
+
+// 订单相关
+
+message OrderItemRequest {
+  int64 user = 1;
+  int64 stock = 2;
+  int32 number = 4;
+  float cost = 5;
+  uint32 direction = 6;
+}
+
+message OrderInfoResponse {
+  int64 id = 1;
+  int64 user = 2;
+  int64 stock = 3;
+  int32 number = 4;
+  float cost = 5;
+  uint32  direction = 6;
+  string status = 7;
+  string orderSn = 8;
+}
+
+message UserOrderInfoRequest {
+  int64 user = 1;
+  int32 page = 2;
+  int32 pageSize = 3;
+}
+
+message OrderListResponse {
+  int32 total = 1;
+  repeated OrderInfoResponse data = 2;
+}
+
+message OrderInfoRequest {
+  int64 id = 1;
+  string OrderSn = 2;
+}
+
+message UpdateOrderRequest {
+  int32 id = 1;
+  string status = 2;
+  string orderSn = 3;
+}
+
+message DeleteOrderRequest {
+  // 保证订单删除正确
+  int64 id = 1;
+  int64 user = 2;
+  int64 stock = 3;
+  string trustSn = 4;
+}
+
+message DeleteOrderResponse {
+  bool success = 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

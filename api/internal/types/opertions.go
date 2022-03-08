@@ -5,6 +5,10 @@ type ReqUserFav struct {
 	StockId int32 `form:"stockid"`
 }
 
+type ReqStockFav struct {
+	StockId int32 `form:"stockid"`
+}
+
 type ReqStockFavList struct {
 	StockId int32 `form:"stockid"`
 }

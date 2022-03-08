@@ -5,6 +5,8 @@ package server
 
 import (
 	"context"
+	"github.com/tal-tech/go-zero/core/stores/cache"
+	"gorm.io/gorm"
 	"stockexchange/rpc/operation/internal/svc"
 
 	"stockexchange/rpc/operation/internal/logic"
@@ -12,7 +14,9 @@ import (
 )
 
 type OperationServer struct {
-	svcCtx *svc.ServiceContext
+	svcCtx   *svc.ServiceContext
+	DbEngine *gorm.DB
+	Cache    cache.CacheConf
 }
 
 func NewOperationServer(svcCtx *svc.ServiceContext) *OperationServer {

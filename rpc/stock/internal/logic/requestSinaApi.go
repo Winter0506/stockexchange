@@ -12,7 +12,7 @@ import (
 func requestApi(code string) ([]string, error) {
 	client := &http.Client{}
 	// 请求方法可以包括 http method  GET、POST、PUT、DELETE
-	req, err := http.NewRequest("GET", "http://hq.sinajs.cn/?format=text&list="+code, nil)
+	req, err := http.NewRequest("GET", "https://hq.sinajs.cn/?format=text&list="+code, nil)
 	var resp *http.Response
 
 	if err != nil {
@@ -20,6 +20,7 @@ func requestApi(code string) ([]string, error) {
 		return nil, err
 	}
 	req.Header.Add("If-None-Match", `W/"wyzzy"`)
+	req.Header.Add("Referer", "http://vip.stock.finance.sina.com.cn")
 	resp, err = client.Do(req)
 	if err != nil {
 		// log.Println(err)
@@ -44,6 +45,8 @@ func requestApi(code string) ([]string, error) {
 	// 模拟打印
 	var stockSlice []string
 	var stockNo, stockName string
+	//fmt.Println(sitemap)
+	//fmt.Println("============")
 	stockNo, stockName = byteToName(strings.Split(string(sitemap), ",")[0])
 	/*todayOpeningPrice := strings.Split(string(sitemap), ",")[1]
 	yesterdayClosingPrice := strings.Split(string(sitemap), ",")[2]

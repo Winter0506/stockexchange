@@ -99,11 +99,9 @@ service stock-api {
 	
 	@handler GetStockByName
 	get /api/v1/stock/searchname (reqStockByName) returns (respStockDetail)
-	
 }
 
 // goctl api go -api stock.api -dir .
-// 这个创建需要jwt 和 auth 验证 必须管理员才能创建
 @server (
 	// -H 'authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6I'
 	jwt: Auth
@@ -113,7 +111,7 @@ service stock-api {
 service stock-api {
 	@handler create
 	post /api/v1/stock/create (reqStockCreate) returns (respStockDetail)
-	
+
 	// 修改 更新 删除 需要验证用户权限
 	// 既然创建是管理员完成的 那么暂时就不会有错 将来实现
 }

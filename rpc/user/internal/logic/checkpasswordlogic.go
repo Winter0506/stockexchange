@@ -9,7 +9,7 @@ import (
 	"stockexchange/rpc/user/internal/svc"
 	"stockexchange/rpc/user/user"
 
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 // 封装一层 user业务在这里编写

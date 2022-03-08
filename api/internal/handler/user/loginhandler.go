@@ -6,7 +6,7 @@ import (
 	"stockexchange/api/internal/svc"
 	"stockexchange/api/internal/types"
 
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 func LoginHandler(ctx *svc.ServiceContext) http.HandlerFunc {

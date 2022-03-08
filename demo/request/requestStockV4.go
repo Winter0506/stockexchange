@@ -13,7 +13,7 @@ func main() {
 		// 在V4基础上进行改进
 		worker := requestwork.New(50)
 
-		client := greq.New(worker, 5 * time.Second, false)
+		client := greq.New(worker, 5*time.Second, false)
 
 		//GET
 		stockdata, _, err := client.Get("http://hq.sinajs.cn/?format=text&list=sh600519", nil)

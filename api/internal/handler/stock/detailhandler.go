@@ -3,7 +3,7 @@ package stock
 import (
 	"net/http"
 
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 	"stockexchange/api/internal/logic/stock"
 	"stockexchange/api/internal/svc"
 	"stockexchange/api/internal/types"

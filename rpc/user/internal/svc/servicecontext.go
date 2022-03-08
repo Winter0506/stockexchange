@@ -5,7 +5,7 @@ import (
 	//"gorm.io/gorm"
 	//"gorm.io/gorm/schema"
 	//"github.com/go-sql-driver/mysql"
-	"github.com/tal-tech/go-zero/core/stores/sqlx"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
 	"stockexchange/rpc/user/internal/config"
 	"stockexchange/rpc/user/model"
 )

@@ -54,15 +54,3 @@ func TestGenerateToken(t *testing.T) {
 		t.Errorf("wrong token generated. want: %q; got: %q", want, tkn)
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-

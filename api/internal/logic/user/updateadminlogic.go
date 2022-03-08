@@ -7,7 +7,7 @@ import (
 	"stockexchange/api/internal/types"
 	"stockexchange/rpc/user/user"
 
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type UpdateAdminLogic struct {

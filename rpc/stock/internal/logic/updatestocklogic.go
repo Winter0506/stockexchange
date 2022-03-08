@@ -9,7 +9,7 @@ import (
 	"stockexchange/rpc/stock/internal/svc"
 	"stockexchange/rpc/stock/stock"
 
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type UpdateStockLogic struct {

@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"github.com/tal-tech/go-zero/core/stores/sqlx"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
 	"stockexchange/rpc/stock/internal/config"
 	"stockexchange/rpc/stock/model"
 )

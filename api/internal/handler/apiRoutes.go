@@ -7,7 +7,7 @@ import (
 	stock "stockexchange/api/internal/handler/stock"
 	"stockexchange/api/internal/svc"
 
-	"github.com/tal-tech/go-zero/rest"
+	"github.com/zeromicro/go-zero/rest"
 )
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {

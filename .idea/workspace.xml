@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="21.12.30_增加更新用户删除用户">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/getuserlistlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/getuserlistlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/updateadminlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/updateadminlogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/user/updatelogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/logic/user/updatelogic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/stock.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/stock.api" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/demo/proto/user/user.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/proto/user/user.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/demo/simulate.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/simulate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" afterDir="false" />
-    </list>
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.03.08_基本完成" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +10,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Proto File" />
         <option value="Api File" />
         <option value="Go File" />
       </list>
@@ -49,11 +41,12 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultApiTemplateProperty" value="Api File" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="DefaultProtoTemplateProperty" value="Proto File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/rpc/demo/proto" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/rpc/demo/proto/user" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,21 +57,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\demo\proto" />
-      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\stock\model" />
-      <recent name="D:\Go\GOPATH\src\stockexchange\api\internal\handler\user" />
-      <recent name="D:\Go\GOPATH\src\stockexchange\web\user\internal\logic" />
-      <recent name="D:\Go\GOPATH\src\stockexchange\web\user\internal\handler" />
+      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\demo\proto\user" />
+      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\inventory\model" />
+      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\order\model" />
+      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\model" />
+      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\demo\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\inventory" />
       <recent name="D:\Go\GOPATH\src\stockexchange\web\user" />
       <recent name="D:\Go\GOPATH\src\stockexchange\api\internal\utils" />
       <recent name="D:\Go\GOPATH\src\stockexchange\api" />
       <recent name="D:\Go\GOPATH\src\stockexchange\rpc\demo\proto\user" />
-      <recent name="D:\Go\GOPATH\src\stockexchange\rpc\demo" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Build.go build stockexchange.go">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="stockexchange" />
       <working_directory value="$PROJECT_DIR$" />
@@ -99,6 +92,15 @@
       <directory value="$PROJECT_DIR$/api" />
       <method v="2" />
     </configuration>
+    <configuration name="go build stockexchange/rpc/demo" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="stockexchange" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/rpc/demo/simulate.go" />
+      <package value="stockexchange/rpc/demo" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="stockexchange" />
       <working_directory value="$PROJECT_DIR$" />
@@ -110,6 +112,11 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build stockexchange/rpc/demo" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,7 +127,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -141,7 +160,19 @@
     <MESSAGE value="21.12.27_股票创建查询完成" />
     <MESSAGE value="21.12.29_增加鉴权与管理员校验中间件" />
     <MESSAGE value="21.12.30_增加更新用户删除用户" />
-    <option name="LAST_COMMIT_MESSAGE" value="21.12.30_增加更新用户删除用户" />
+    <MESSAGE value="22.01.13-main用户编写" />
+    <MESSAGE value="22.01.13_股票列表以及名称代码查询" />
+    <MESSAGE value="22.01.14_添加用户操作与gorm" />
+    <MESSAGE value="22.01.15_添加用户操作所有实现" />
+    <MESSAGE value="22.01.15_用户操作部分完成" />
+    <MESSAGE value="22.01.15_用户操作部分完成+workspace.xml" />
+    <MESSAGE value="22.01.15_用户操作部分完成+types.go" />
+    <MESSAGE value="22.01.15_用户操作部分完成+rpc/operation/add" />
+    <MESSAGE value="22.01.17_更改proto文件" />
+    <MESSAGE value="22—01-16_订单服务建表" />
+    <MESSAGE value="22.01.17_建表+订单proto" />
+    <MESSAGE value="22.03.08_基本完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="22.03.08_基本完成" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -150,16 +181,5 @@
         <entry key="GOPROXY" value="https://goproxy.cn,direct" />
       </map>
     </environment>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/rpc/stock/internal/logic/createstocklogic.go</url>
-          <line>35</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

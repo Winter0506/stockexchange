@@ -1,16 +1,12 @@
 package model
 
-import (
-	"time"
-)
-
-type BaseModel struct {
+/*type BaseModel struct {
 	ID        int32     `gorm:"column:id;primaryKey"`
 	CreatedAt time.Time `gorm:"column:created_at"`
 	UpdatedAt time.Time `gorm:"column:updated_at"`
 	DeletedAt time.Time `gorm:"column:deleted_at"`
 	IsDeleted bool      `gorm:"column:isDeleted;default:0;type:int comment '是否删除, 0否1是'"`
-}
+}*/
 
 type User struct {
 	BaseModel

@@ -1,0 +1,96 @@
+type (
+	reqUserAccountId {
+		UserId int32 `path:"id"`
+	}
+
+	AccountDetailMessage {
+		UserId         int32   `json:"userId"`
+		Account        float32 `json:"accout"`
+		MarketValue    float32 `json:"marketvalue"`
+		Available      float32 `json:"available"`
+		ProfiltAndLoss float32 `json:"profiltAndLoss"`
+	}
+
+	DetailMeta {
+		Msg    string `json:"msg""`
+		Status int16  `json:"status"`
+	}
+
+	respUserAccountDetail {
+		AccountDetailMessage
+		DetailMeta
+	}
+
+	reqUserAccountUpdate {
+		UserId  int32   `json:"userId"`
+		Account float32 `json:"account"`
+	}
+
+	reqUserAccountCreate {
+		UserId  int32   `json:"userId"`
+		Account float32 `json:"account"`
+	}
+
+	HoldPositionListMeta {
+		Msg    string `json:"msg""`
+		Status int16  `json:"status"`
+	}
+
+	respHoldPositionList {
+		HoldPositionList []string `json:"holdPositionList"`
+		HoldPositionListMeta
+	}
+
+	reqCreateTrustItem {
+		UserId    int32 `json:"userId"`
+		StockId   int32 `json:"stockId"`
+		Num       int32 `json:"num"`
+		Direction uint  `json:"direction"` // 1是买入 2是卖出
+	}
+
+	TrustInfoResponse {
+		Id         int32   `json:"id"`
+		User       int32   `json:"userId"`
+		Stock      int32   `json:"stockId"`
+		Num        int32   `json:"num"`
+		Cost       float32 `json:"cost"`
+		Direction  uint    `json:"direction"`
+		DealNumber int32   `json:"dealNumber"`
+		DealCost   float32 `json:"dealCost"`
+		Status     string  `json:"status"`
+		TrustSn    string  `json:"trustSn"`
+	}
+
+	respTrustInfoResponse {
+		TrustInfoResponse
+		DetailMeta
+	}
+)
+
+@server (
+	jwt: Auth
+	group: order
+)
+service order-api {
+	// 查询用户钱包
+	@handler UserAccountDetail
+	get /api/v1/order/account/:id (reqUserAccountId) returns (respUserAccountDetail)
+	
+	@handler CreateUserAccount
+	post /api/v1/order/account/create (reqUserAccountCreate) returns (respUserAccountDetail)
+	
+	// 更改用户钱包金额
+	@handler UpdateUserAccount
+	patch /api/v1/order/account/update (reqUserAccountUpdate) returns (respUserAccountDetail)
+	
+	// 查询用户持仓列表
+	@handler HoldPositionList
+	get /api/v1/order/hold/:id (reqUserAccountId) returns (respHoldPositionList)
+	
+	// 发起委托 买入
+	// 只要我不卖出  我就不会亏损
+	@handler CreateTrust
+	post /api/v1/order/trust/createtrust (reqCreateTrustItem) returns (respTrustInfoResponse)
+}
+
+// goctl api go -api order.api -dir .

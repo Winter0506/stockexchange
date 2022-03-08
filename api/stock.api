@@ -56,6 +56,29 @@ type (
 		StockName string `json:"stockName"`
 		StockCode string `json:"stockCode"`
 	}
+
+	reqStockList {
+		Pn    int `json:"pn,default=0"`
+		PSize int `json:"psize,default=10"`
+	}
+
+	ListMeta {
+		Msg    string `json:"msg""`
+		Status int16  `json:"status"`
+	}
+
+	respStockList {
+		StockList []string `json:"stocklist"`
+		ListMeta
+	}
+
+	reqStockByCode {
+		StockCode string `form:"code"`
+	}
+
+	reqStockByName {
+		StockName string `form:"name"`
+	}
 )
 
 @server (
@@ -65,15 +88,20 @@ type (
 service stock-api {
 	@handler detail
 	get /api/v1/stock/:id (reqStockId) returns (respStockDetail)
-	// 股票相关
-	// 获取详情 需要 外包一层 代码获取
-	// 列表获取  这个需要看用户相关 先不实现
-	// 名字获取 代码获取 这两个都是在搜索中实现 而且用户相关的里面只携带股票id
-	// 修改 添加 需要验证用户权限
+	
+	@handler GetStockList
+	get /api/v1/stock (reqStockList) returns (respStockList)
+	
+	// 名字获取 代码获取 这两个都是在搜索时应用 用户通过搜索获取id进行收藏 或者 买入
+	// 暂时将其分为搜索名称 和 搜索代码两个功能
+	@handler GetStockByCode
+	get /api/v1/stock/searchcode (reqStockByCode) returns (respStockDetail)
+	
+	@handler GetStockByName
+	get /api/v1/stock/searchname (reqStockByName) returns (respStockDetail)
 }
 
 // goctl api go -api stock.api -dir .
-// 这个创建需要jwt 和 auth 验证 必须管理员才能创建
 @server (
 	// -H 'authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6I'
 	jwt: Auth
@@ -83,15 +111,7 @@ service stock-api {
 service stock-api {
 	@handler create
 	post /api/v1/stock/create (reqStockCreate) returns (respStockDetail)
+
+	// 修改 更新 删除 需要验证用户权限
+	// 既然创建是管理员完成的 那么暂时就不会有错 将来实现
 }
-
-// 交易相关
-// 订单相关  用户金额相关表 用户id 本金 现金 总资产 金额 字段 累计盈亏 浮动盈亏
-
-// 持仓表  市值 数量 现价 成本 盈亏 盈亏率  收藏
-// 操作记录表  买入 卖出 价格点 日期 成交额
-
-// 库存相关 拓宽思路
-
-// 笔记相关 就是user_op
-// 通知相关

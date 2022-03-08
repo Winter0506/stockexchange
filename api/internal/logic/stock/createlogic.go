@@ -3,7 +3,6 @@ package stock
 import (
 	"context"
 	"errors"
-	"fmt"
 	"net/http"
 	"stockexchange/rpc/stock/stock"
 
@@ -47,7 +46,6 @@ func (m *CheckCodeMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 }
 */
 func (l *CreateLogic) Create(req types.ReqStockCreate) (*types.RespStockDetail, error) {
-	fmt.Println(req.StockCode, req.StockName)
 	resp, err := l.svcCtx.Stock.CreateStock(l.ctx, &stock.CreateStockInfo{
 		StockName: req.StockName,
 		StockCode: req.StockCode,

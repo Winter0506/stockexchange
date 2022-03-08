@@ -8,7 +8,6 @@ import (
 	"google.golang.org/grpc"
 	"log"
 	"stockexchange/rpc/demo/global"
-	"stockexchange/rpc/demo/initialize"
 	"stockexchange/rpc/demo/model"
 	"stockexchange/rpc/demo/proto/user"
 )
@@ -79,14 +78,15 @@ func TestGetUserByEmail() {
 
 func TestUpdateUser() {
 	rsp, err := userClient.UpdateUser(context.Background(), &user.UpdateUserInfo{
-		Id:        8,
-		UserName:  "王其超UP",
+		Id:        1,
+		UserName:  "王其超",
 		PassWord:  "123456",
-		Email:     "wangqichao0105@gmail.com",
-		Gender:    "female",
+		Email:     "wangqichao@gmail.com",
+		Gender:    "male",
 		Role:      2,
 		IsDeleted: 0,
 	})
+	fmt.Println(rsp, err)
 	if err != nil {
 		panic(err)
 	}
@@ -105,18 +105,42 @@ func TestCheckPassWord() {
 }
 
 func main() {
-	fmt.Println("这是demo程序...")
-	initialize.InitDB()
-	initialize.InitLogger()
+	//fmt.Println("这是demo程序...")
+	//initialize.InitDB()
+	//initialize.InitLogger()
 	Init()
-	fmt.Println("基础连接成功...")
+	//fmt.Println("基础连接成功...")
 	// createUser()
 	// TestCreateUser()
 	// TestGetUserByEmail()
-	// TestUpdateUser()
+	TestUpdateUser()
 	// TestCheckPassWord()
-	TestGetUserList()
+	// TestGetUserList()
 	//TestUpdateUser()
+	// gorm验证
+	//dsn := "root:root@tcp(127.0.0.1:3306)/stockexchange?charset=utf8mb4&parseTime=True&loc=Local"
+	//
+	//newLogger := logger.New(
+	//	log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
+	//	logger.Config{
+	//		SlowThreshold: time.Second, // 慢 SQL 阈值
+	//		LogLevel:      logger.Info, // Log level
+	//		Colorful:      true,        // 禁用彩色打印
+	//	},
+	//)
+	//
+	//// 全局模式
+	//db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
+	//	NamingStrategy: schema.NamingStrategy{
+	//		SingularTable: true,
+	//	},
+	//	Logger: newLogger,
+	//})
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//_ = db.AutoMigrate(&model.UserFav{})
 }
 
 // 验证分页

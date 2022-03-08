@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package inventory;
+
+// goctl rpc proto -src inventory.proto -dir .
+service inventory {
+  rpc SetInv(StockInfo) returns(Empty); //设置库存
+  rpc InvDetail(StockInfo) returns (StockInfo); // 获取库存信息
+  rpc Sell(SellInfo) returns (Empty); //库存扣减
+  rpc Reback(SellInfo) returns(Empty); //库存归还
+}
+
+message Empty {}
+
+message StockInfo {
+  int32 StockId = 1; // stock的id 又不是股票代码
+  int32 num = 2;
+}
+
+message SellInfo {
+  int32 StockId = 1;
+  int32  num = 2;
+  string trustSn = 3; // 扣减库存是在委托时候发生的 所以要用trustSn
+}

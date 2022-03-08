@@ -14,6 +14,21 @@ Stock:
     Hosts:
       - localhost:2379
     Key: stock.rpc
+Operation:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: operation.rpc
+Order:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: order.rpc
+Inventory:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: inventory.rpc
 
 CacheRedis:
   - Host: 127.0.0.1

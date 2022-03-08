@@ -1,0 +1,41 @@
+// Reback在业务里面没用上
+// 所以只需要两个 方法 设置库存 和 查看库存详情
+type (
+	DetailMeta {
+		Msg    string `form:"msg""`
+		Status int16  `form:"status"`
+	}
+
+	reqSetInv {
+		StockId int32 `form:"stockid"`
+		Num     int32 `form:"num"`
+	}
+
+	reqInvDetail {
+		StockId int32 `form:"stockid"`
+	}
+
+	respSetInv {
+		DetailMeta
+	}
+
+	respInvDetail {
+		reqSetInv
+		DetailMeta
+	}
+)
+
+// goctl api go -api inventory.api -dir .
+@server (
+	// -H 'authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6I'
+	jwt: Auth
+	middleware: Admin
+	group: inventory
+)
+service inventory-api {
+	@handler SetInv
+	post /api/v1/inventory/setinv (reqSetInv) returns (respSetInv)
+	
+	@handler InvDetail
+	get /api/v1/inventory/invdetail (reqInvDetail) returns (respInvDetail)
+}

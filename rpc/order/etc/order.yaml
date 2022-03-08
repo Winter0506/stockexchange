@@ -1,0 +1,24 @@
+Name: order.rpc
+ListenOn: 127.0.0.1:8083
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: order.rpc
+# 以下为手动添加的配置
+# mysql 配置
+DataSource: root:123456@tcp(localhost:3306)/stockexchange?charset=utf8mb4&parseTime=true&loc=Local
+# 对应的表
+Table: user
+# redis 作为缓存存储
+Cache:
+  - Host: localhost:6379
+Stock:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: stock.rpc
+Inventory:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: inventory.rpc

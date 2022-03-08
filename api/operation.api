@@ -1,0 +1,65 @@
+type (
+	DetailMeta {
+		Msg    string `form:"msg""`
+		Status int16  `form:"status"`
+	}
+
+	reqUserFav {
+		UserId  int32 `form:"userid"`
+		StockId int32 `form:"stockid"`
+	}
+
+	reqStockFavList {
+		StockId int32 `form:"stockid"`
+	}
+
+	reqUserFavList {
+		UserId int32 `form:"userid"`
+	}
+
+	respFavDetail {
+		DetailMeta
+	}
+
+	FavMessage {
+		Total   int      `json:"total""`
+		FavList []string `json:"favlist"`
+	}
+
+	respFavList {
+		FavMessage
+		DetailMeta
+	}
+)
+
+@server (
+	jwt: Auth
+	group: operation
+)
+
+service operation-api {
+	@handler FavDetail
+	get /api/v1/operation/detail (reqUserFav) returns (respFavDetail)
+	
+	@handler Add
+	post /api/v1/operation/add (reqUserFav) returns (respFavDetail)
+	
+	@handler Delete
+	delete /api/v1/operation/delete (reqUserFav) returns (respFavDetail)
+	
+	@handler UserFav
+	get /api/v1/operation/userfav (reqUserFavList) returns (respFavList)
+	
+}
+
+// goctl api go -api operation.api -dir .
+@server (
+	// -H 'authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6I'
+	jwt: Auth
+	middleware: Admin
+	group: operation
+)
+service operation-api {
+	@handler StockFav
+	get /api/v1/operation/stockfav (reqStockFavList) returns (respFavList)
+}

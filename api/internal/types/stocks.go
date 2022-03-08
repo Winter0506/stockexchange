@@ -41,7 +41,7 @@ type DetailMessage struct {
 }
 
 type DetailMeta struct {
-	Msg    string `json:"msg""`
+	Msg    string `json:"msg"`
 	Status int16  `json:"status"`
 }
 
@@ -53,4 +53,33 @@ type RespStockDetail struct {
 type ReqStockCreate struct {
 	StockName string `json:"stockName"`
 	StockCode string `json:"stockCode"`
+}
+
+type ReqStockList struct {
+	Pn    int `json:"pn,default=0"`
+	PSize int `json:"psize,default=10"`
+}
+
+type StockMessage struct {
+	Id        int32  `json:"id"`
+	StockName string `json:"stockName"`
+	StockCode string `json:"stockCode"`
+}
+
+type ListMeta struct {
+	Msg    string `json:"msg"`
+	Status int16  `json:"status"`
+}
+
+type RespStockList struct {
+	StockList []string `json:"stocklist"`
+	ListMeta  `json:"meta"`
+}
+
+type ReqStockByCode struct {
+	StockCode string `form:"code"`
+}
+
+type ReqStockByName struct {
+	StockName string `form:"name"`
 }

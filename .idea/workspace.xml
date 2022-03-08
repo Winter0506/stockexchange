@@ -1,81 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.01.17_建表+订单proto">
-      <change afterPath="$PROJECT_DIR$/api/internal/types/inventorys.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/internal/types/orders.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/inventory.api" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/order.api" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/etc/inventory.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/internal/config/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/internal/logic/autoback.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/internal/logic/invdetaillogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/internal/logic/rebacklogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/internal/logic/selllogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/internal/logic/setinvlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/internal/server/inventoryserver.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/internal/svc/servicecontext.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/inventory.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/inventory.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/inventory/inventory.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/inventoryclient/inventory.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/model/base.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/inventory/model/inventory.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/model/order.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/etc/order.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/config/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/createholdpositionlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/createorderitemlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/createtrustitemlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/createuseraccountlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/deleteholdpositionlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/deleteorderitemlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/deletetrustitemlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/deleteuseraccountlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/getholdpositionlistlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/getholdpositionlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/getuseraccountlistlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/getuseraccountlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/orderitemdetaillogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/orderitemlistlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/trustListen.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/trustitemdetaillogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/trustitemlistlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/updateholdpositionlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/updateorderitemlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/updatetrustitemlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/logic/updateuseraccountlogic.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/server/orderserver.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/internal/svc/servicecontext.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/model/global.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/model/holdpositionmodel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/model/order.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/model/ordermodel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/model/trustmodel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/model/useraccountmodel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/model/vars.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/order.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/order/order.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/order/orderclient/order.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/etc/stockexchange.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/etc/stockexchange.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/handler/apiRoutes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/stock/stockfavlogic.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/logic/stock/userfavlogic.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/svc/servicecontext.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/svc/servicecontext.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/internal/types/opertions.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/internal/types/opertions.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/operation.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/operation.api" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/stock.api" beforeDir="false" afterPath="$PROJECT_DIR$/api/stock.api" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/demo/simulate.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/demo/simulate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/operation/internal/server/operationserver.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/operation/internal/server/operationserver.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/order/order.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/order/order.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/stock/internal/logic/requestSinaApi.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/stock/internal/logic/requestSinaApi.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/user/internal/logic/updateuserlogic.go" afterDir="false" />
-    </list>
+    <list default="true" id="906cbf16-aa35-49c2-b61a-ce39532d62f5" name="Default Changelist" comment="22.03.08_基本完成" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -245,7 +171,8 @@
     <MESSAGE value="22.01.17_更改proto文件" />
     <MESSAGE value="22—01-16_订单服务建表" />
     <MESSAGE value="22.01.17_建表+订单proto" />
-    <option name="LAST_COMMIT_MESSAGE" value="22.01.17_建表+订单proto" />
+    <MESSAGE value="22.03.08_基本完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="22.03.08_基本完成" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
